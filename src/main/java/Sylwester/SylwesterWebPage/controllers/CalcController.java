@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDate;
 
 @Controller
-public class calcController {
+public class CalcController {
     @RequestMapping("/CalcPlus")
     public String CalcPLUS(Model model, Integer A, Integer B,Integer wynik){
         model.addAttribute("date", LocalDate.now());

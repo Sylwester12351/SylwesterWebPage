@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDate;
 
 @Controller
-public class passwordGenController {
+public class PasswordGenController {
     @RequestMapping("/PassResult")
     public String CalcPLUS(Model model, Integer Genpass,String wynikgen){
         model.addAttribute("date", LocalDate.now());
