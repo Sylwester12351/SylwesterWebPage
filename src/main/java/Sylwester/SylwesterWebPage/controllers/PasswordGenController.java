@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
-
+//b
 @Controller
 public class PasswordGenController {
     @RequestMapping("/PassResult")

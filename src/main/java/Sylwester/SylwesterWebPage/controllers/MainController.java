@@ -14,7 +14,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static Sylwester.SylwesterWebPage.weatherPage.ConfWeatcher.*;
+import static Sylwester.SylwesterWebPage.weatherPage.ConfWeather.*;
 
 @Controller
 public class MainController {
