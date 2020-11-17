@@ -55,19 +55,24 @@ body {
 
 </head>
 <body>
-<div id="header">Witaj na mojej stronie !</div>
+<div id="header"><h3>Witaj na mojej stronie !</h3></div>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
         <dd><a th:href="@{/DataTest}">Test bazy danych h2</a></dd>
-        <dd><a th:href="@{/WeatherAppOnline}">Pogoda</a></dd>
+        <dd><a th:href="@{/WeatherAppOnline}">Pogoda w krakowie</a></dd>
         <dd><a th:href="@{/Calc}">Kalkulator</a></dd>
         <dd><a th:href="@{/PassGen}">Prosty generator haseł</a></dd>
+        <dt>MOJE KONTA</dt>
+        <dd><a href="https://github.com/Sylwester12351">GIT</a></dd>
+        <dd><a href="https://www.facebook.com/nieistotne12361/">Facebook</a></dd>
+        <dt>ADRES EMAIL</dt>
+        <dd>sylgaw98fm@gmail.com </dd>
     </dl>
 </div>
-<div id="content">Po lewej stronie możesz zobaczyć drobne mikro serwisy :)</div>
+<div id="content">Witam szanownych przeglądających na stronie zaprojektowanej w Spring Framework po lewej stronie możesz zobaczyć przykładowe mikro serwisy :)</div>
 <div id="right"><h4><span th:text="${date}">DATE</span></h4></div>
-<div id="footer">Strona postawiona na własnym serwerze RPI 3b+ </div>
+<div id="footer">Strona postawiona na własnym serwerze RPI 3b+ ------ Sylwester Gawroński </div>
 </body>
 
 </html>
