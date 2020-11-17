@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Test bazy danych</title>
+    <title> Kalkulator dodawanie i odejmowanie </title>
     <style>
 html {
-	background-color: #FFF8DD;
+	background-color: #FFF8DC;
 	color: #000;
 	margin: 0;
 	padding: 0;
@@ -52,17 +52,28 @@ body {
 }
 
 </style>
+
 </head>
 <body>
-<div id="header">Test bazy danych</div>
+<div id="header">Kalkulator</div>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
         <dd><a th:href="@{/}">Powrót</a></dd>
     </dl>
 </div>
-<div id="content">Wpisz się do bazy danych imię nazwisko i rok urodzenia i przetestuj</div>
-<div id="right"></div>
+<div id="content">Oblicz sobie coś
+    <dl style="">
+        <dt>Prosty kalkulator</dt>
+        <dd><form action="/CalcPlus" method="post">
+            A: <input type="number" name="A" />
+            B: <input type="number" name="B" />
+            <input type="submit" value="Dodaj" />
+        </form></dd>
+    </dl>
+</div>
+<div id="right"><h4><span th:text="${date}">DATE</span></h4></div>
 <div id="footer">Strona postawiona na własnym serwerze RPI 3b+ </div>
 </body>
+
 </html>
