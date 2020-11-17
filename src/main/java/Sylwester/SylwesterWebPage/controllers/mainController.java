@@ -30,6 +30,11 @@ public class mainController {
         model.addAttribute("date", LocalDate.now());
         return "Calculator";
     }
+    @GetMapping("/PassGen")
+    public String PasswordGenerator(Model model){
+        model.addAttribute("date", LocalDate.now());
+        return "PasswordGenerator";
+    }
 
 
 }
