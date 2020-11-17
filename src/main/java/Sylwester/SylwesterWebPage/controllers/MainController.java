@@ -74,6 +74,10 @@ public class MainController {
         model.addAttribute("date", LocalDate.now());
         return "PasswordGenerator";
     }
+    @GetMapping("/error")
+    public String ErrorPage(){
+        return "error";
+    }
 
 
 }
