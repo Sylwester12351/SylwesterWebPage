@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Pogoda</title>
     <style>
 html {
-	background-color: #FFF8DC;
+	background-color: #FFF8DD;
 	color: #000;
 	margin: 0;
 	padding: 0;
@@ -52,20 +52,17 @@ body {
 }
 
 </style>
-
 </head>
 <body>
-<div id="header">Witaj na mojej stronie !</div>
+<div id="header">Pogoda</div>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
-        <dd><a th:href="@{/DataTest}">Test bazy danych h2</a></dd>
-        <dd><a th:href="@{/WeatherAppOnline}">Pogoda</a></dd>
+        <dd><a th:href="@{/}">Powrót</a></dd>
     </dl>
 </div>
-<div id="content">Po lewej stronie możesz zobaczyć drobne mikro serwisy :)</div>
+<div id="content"></div>
 <div id="right"></div>
 <div id="footer">Strona postawiona na własnym serwerze RPI 3b+ </div>
 </body>
-
 </html>
