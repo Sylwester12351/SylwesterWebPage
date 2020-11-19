@@ -1,20 +1,12 @@
 package Sylwester.SylwesterWebPage.controllers;
 
-import org.apache.commons.lang3.StringUtils;
+import Sylwester.SylwesterWebPage.weatherPage.ConfWeather;
+import Sylwester.SylwesterWebPage.weatherPage.GetTemp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalTime;
-
-import static Sylwester.SylwesterWebPage.weatherPage.ConfWeather.*;
 
 @Controller
 public class MainController {
@@ -30,52 +22,39 @@ public class MainController {
         return "DataBaseTest";
     }
     @GetMapping("/WeatherAppOnline")
-    public String Weather(Model model){
-        String temp = null;
+    public String weather(Model model){
+        GetTemp getTemp = new GetTemp();
+        getTemp.convert();
+        String temp = getTemp.getTemperature();
         model.addAttribute("date", LocalDate.now());
-
-        URL url = null;
-        try {
-            url = new URL(SERVICE + City + "," + Country + "&" + "units=" + Type + "&" + "APPID=" + ApiID);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new InputStreamReader(url.openStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String line = null;
-        try {
-            line = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //Temp
-        if (!StringUtils.isBlank(line)) {
-            int startIndex = line.indexOf("{\"temp\"") + 8;
-            int endIndex = line.indexOf(",\"feels_like\"");
-            temp = line.substring(startIndex, endIndex);
-
-        }
-
         model.addAttribute("temp", temp);
         return "WeatherApp";
     }
+    @RequestMapping("/WeatherAppNewCity")
+    public String weatherAppNewCity(Model model, String Country, String City){
+        GetTemp getTemp = new GetTemp();
+        getTemp.setCountry(Country);
+        getTemp.setCity(City);
+        getTemp.convert();
+        String Temperature = getTemp.getTemperature();
+        model.addAttribute("date", LocalDate.now());
+        model.addAttribute("temp",Temperature);
+        model.addAttribute("countryText",getTemp.getCountry());
+        model.addAttribute("cityText",getTemp.getCity());
+        return "WeatherAppNewCity";
+    }
     @GetMapping("/Calc")
-    public String Calculator(Model model){
+    public String calculator(Model model){
         model.addAttribute("date", LocalDate.now());
         return "Calculator";
     }
     @GetMapping("/PassGen")
-    public String PasswordGenerator(Model model){
+    public String passwordGenerator(Model model){
         model.addAttribute("date", LocalDate.now());
         return "PasswordGenerator";
     }
     @GetMapping("/error")
-    public String ErrorPage(){
+    public String errorPage(){
         return "error";
     }
 

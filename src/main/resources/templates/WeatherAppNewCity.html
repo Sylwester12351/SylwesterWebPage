@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Temperatura</title>
+    <title><span th:text="${countryText}">Country</span></title>
     <style>
 html {
 	background-color: #FFF8DD;
@@ -54,18 +54,11 @@ body {
 </style>
 </head>
 <body>
-<div id="header">Możesz sprawdzić jaka jest temperatura w różnych miejscach na świecie !</div>
+<div id="header"><h4><span th:text="${cityText}">City</span></h4></div>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
         <dd><a th:href="@{/}">Powrót</a></dd>
-        <dt>Musisz podać kraj i miasto na przykład: pl Krakow </dt>
-        <dd><form action="/WeatherAppNewCity" method="post">
-            Kraj: <input type="text" name="Country" />
-            Miasto: <input type="text" name="City" />
-            <input type="submit" value="Wykonaj" />
-            <br>
-        </form></dd>
     </dl>
 </div>
 <div id="content"><h4><span th:text="${temp}">TEMP</span></h4><p>Celciusza</p></div>

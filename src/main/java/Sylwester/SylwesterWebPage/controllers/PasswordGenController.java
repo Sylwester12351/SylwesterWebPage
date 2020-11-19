@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Controller
 public class PasswordGenController {
     @RequestMapping("/PassResult")
-    public String CalcPLUS(Model model, Integer Genpass,String wynikgen){
+    public String passResult(Model model, Integer Genpass,String wynikgen){
         model.addAttribute("date", LocalDate.now());
         String Pass = RandomStringUtils.randomAlphabetic(Genpass);
         model.addAttribute("wynikgen",Pass);
