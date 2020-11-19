@@ -1,6 +1,7 @@
 package Sylwester.SylwesterWebPage.weatherPage;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static Sylwester.SylwesterWebPage.weatherPage.ConfWeather.*;
-
+@Service
 public class GetTemp {
     private String temperature = null;
     public String getTemperature() {

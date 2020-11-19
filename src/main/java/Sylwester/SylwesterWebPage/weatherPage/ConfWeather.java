@@ -1,5 +1,8 @@
 package Sylwester.SylwesterWebPage.weatherPage;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class ConfWeather {
     public static String City = "Krakow";
     public static String Country = "pl";

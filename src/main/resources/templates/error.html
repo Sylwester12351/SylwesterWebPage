@@ -6,12 +6,6 @@
 </head>
 <h1>Coś poszło nie tak przykro mi :(</h1>
 <a th:href="@{/}">Powrót</a>
-<body>
-<style>
-body {
-	background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(static/errorSCR.png);
-    background-position: center;
-}
-</style>
+<body background="${pageContext.request.contextPath}/resources/images/errorSCR.png">
 </body>
 </html>

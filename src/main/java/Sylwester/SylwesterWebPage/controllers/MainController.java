@@ -30,7 +30,7 @@ public class MainController {
         model.addAttribute("temp", temp);
         return "WeatherApp";
     }
-    @RequestMapping("/WeatherAppNewCity")
+    @RequestMapping("SylwesterWebPage/WeatherAppOnline/WeatherAppNewCity")
     public String weatherAppNewCity(Model model, String Country, String City){
         GetTemp getTemp = new GetTemp();
         getTemp.setCountry(Country);

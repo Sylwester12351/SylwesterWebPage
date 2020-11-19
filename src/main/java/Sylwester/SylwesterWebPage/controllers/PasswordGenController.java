@@ -9,7 +9,7 @@ import java.time.LocalDate;
 //b
 @Controller
 public class PasswordGenController {
-    @RequestMapping("/PassResult")
+    @RequestMapping("SylwesterWebPage/PassGen/PassResult")
     public String passResult(Model model, Integer Genpass,String wynikgen){
         model.addAttribute("date", LocalDate.now());
         String Pass = RandomStringUtils.randomAlphabetic(Genpass);
