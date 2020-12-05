@@ -1,0 +1,49 @@
+html {
+	background-color: #ffffca;
+	color: #000;
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0 auto;
+	padding: 0;
+        display: block;
+	width: 1004px;
+        overflow: auto;
+}
+#header {
+        width:100%;
+	float: left;
+	background-color: #888;
+}
+#left {
+	width: 200px;
+	height: 250px;
+	float: left;
+	overflow: hidden;
+	background-color: #ccc;
+}
+#right {
+	width: 200px;
+	height: 250px;
+	float: right;
+	overflow: hidden;
+	background-color: #ccc;
+}
+#content {
+	width: 604px;
+	float: left;
+	overflow: hidden;
+	background-color: #fff;
+	margin: 0;
+}
+#footer {
+	clear: both;
+	width: 100%;
+	background-color: #888;
+	ul, ul li {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}

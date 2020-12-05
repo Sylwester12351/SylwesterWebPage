@@ -3,65 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title><span th:text="${countryText}">Country</span></title>
-    <style>
-html {
-	background-color: #FFF8DD;
-	color: #000;
-	margin: 0;
-	padding: 0;
-}
-body {
-	margin: 0 auto;
-	padding: 0;
-        display: block;
-	width: 1004px;
-        overflow: auto;
-}
-#header {
-        width:100%;
-	float: left;
-	background-color: #888;
-}
-#left {
-	width: 200px;
-	float: left;
-	overflow: hidden;
-	background-color: #ccc;
-}
-#right {
-	width: 200px;
-	float: right;
-	overflow: hidden;
-	background-color: #ccc;
-}
-#content {
-	width: 604px;
-	float: left;
-	overflow: hidden;
-	background-color: #fff;
-}
-#footer {
-	clear: both;
-	width: 100%;
-	background-color: #888;
-	ul, ul li {
-	display: block;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-</style>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<div id="header"><h4><span th:text="${cityText}">City</span></h4></div>
+<div id="header">Temperatura w mieście <p><span th:text="${cityText}">City</span></p></div>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
         <dd><a th:href="@{/}">Powrót</a></dd>
     </dl>
 </div>
-<div id="content"><h4><span th:text="${temp}">TEMP</span></h4><p>Celciusza</p></div>
+<div id="content"><h4><span th:text="${temp}">TEMP</span></h4><p>Celciusza</p>
+    <h4><span th:text="${cityText}">City</span></h4>
+</div>
 <div id="right"><h4><span th:text="${date}">DATE</span></h4></div>
 <div id="footer">Strona postawiona na własnym serwerze RPI 3b+ </div>
 </body>

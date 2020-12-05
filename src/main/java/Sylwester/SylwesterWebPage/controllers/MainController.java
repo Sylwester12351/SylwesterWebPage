@@ -28,6 +28,7 @@ public class MainController {
         String temp = getTemp.getTemperature();
         model.addAttribute("date", LocalDate.now());
         model.addAttribute("temp", temp);
+        model.addAttribute("cityTextG",getTemp.getCity());
         return "WeatherApp";
     }
     @RequestMapping("SylwesterWebPage/WeatherAppOnline/WeatherAppNewCity")

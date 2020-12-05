@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Błąd</title>
 </head>
-<h1>Coś poszło nie tak przykro mi :(</h1>
+<div>
+    <h1>Coś poszło nie tak przykro mi :(</h1>
+</div>
 <a th:href="@{/}">Powrót</a>
-<body background="${pageContext.request.contextPath}/resources/images/errorSCR.png">
+<body th:style="'background-image:url(' + @{/images/errorSCR.png} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
 </body>
 </html>
