@@ -4,10 +4,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ConfWeather {
-    public static String City = "Krakow";
-    public static String Country = "pl";
-    public static String Type = "metric";
-    public static String ApiID = "46da914e3b04bc6125fdb728f355cd0e";
+    static String City = "Krakow";
+    static String Country = "pl";
+    static String Type = "metric";
+    static String ApiID = "46da914e3b04bc6125fdb728f355cd0e";
 
     public static String getCity() {
         return City;
