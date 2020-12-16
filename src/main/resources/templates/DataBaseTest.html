@@ -2,16 +2,15 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Test bazy danych</title>
+    <title>Test data base</title>
     <link rel="stylesheet" th:href="@{/css/styleBlog.css}"/>
 </head>
 <body>
-<div id="header">Test bazy danych</div>
+<div id="header">Test data base</div>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
         <dd><a th:href="@{/}">Powrót</a></dd>
-        <dd><a th:href="@{SylwesterWebPage/blogs/DataBaseAddText}">Stwórz wpis</a></dd>
     </dl>
 </div>
 <div id="content">Przykładowe wpisy możesz dodać własny wpis
@@ -29,8 +28,27 @@
             <td th:utext="${Blog.message}">...</td>
         </tr>
     </table>
+    <br>
 </div>
-<div id="right"><h4><span th:text="${date}">DATE</span></h4></div>
+<div id="right"><h4><span th:text="${date}">DATE</span><br></h4>
+    <div>
+        <form action="#" th:action="@{/blogs}" th:object="${blog}" method="post">
+            <label for="name">Imię</label>
+            <input type="text" th:field="*{name}" id="name" placeholder="name">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            <br>
+            <label for="topic">Temat</label>
+            <input type="text" th:field="*{topic}" id="topic" placeholder="topic">
+            <span th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></span>
+            <br>
+            <label for="message">Wiadomość</label>
+            <input type="text" th:field="*{message}" id="message" placeholder="message">
+            <span th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></span>
+            <br>
+            <input type="submit" value="Dodaj wpis">
+        </form>
+    </div>
+</div>
 <div id="footer">Strona postawiona na własnym serwerze RPI 3b+ </div>
 </body>
 </html>

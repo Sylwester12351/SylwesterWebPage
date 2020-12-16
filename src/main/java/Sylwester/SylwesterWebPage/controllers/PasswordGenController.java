@@ -9,11 +9,15 @@ import java.time.LocalDate;
 //b
 @Controller
 public class PasswordGenController {
+    TextData textData = new TextData();
     @RequestMapping("SylwesterWebPage/PassGen/PassResult")
     public String passResult(Model model, Integer Genpass,String wynikgen){
         model.addAttribute("date", LocalDate.now());
         String Pass = RandomStringUtils.randomAlphabetic(Genpass);
         model.addAttribute("wynikgen",Pass);
+        model.addAttribute("header",textData.getPassGenHeaderResult());
+        model.addAttribute("back",textData.getBack_PL());
+        model.addAttribute("foot",textData.getFooter_PL());
         return "PassResult";
     }
 }

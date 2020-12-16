@@ -23,13 +23,7 @@ public class BlogController {
         model.addAttribute("date", LocalDate.now());
         return "DataBaseTest";
     }
-    @GetMapping("/SylwesterWebPage/blogs/DataBaseAddText")
-    public String addNewText (Blog blog,Model model) {
-        model.addAttribute("date", LocalDate.now());
-        return "DataBaseAdd";
-    }
-
-    @PostMapping("/SylwesterWebPage/blogs/DataBaseAddText")
+    @PostMapping("/blogs")
     public String addUser(@Valid Blog blog, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "error";

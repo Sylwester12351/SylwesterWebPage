@@ -6,37 +6,27 @@
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<div id="header">Witaj na mojej stronie ! Welcome !! 1.0.3</div>
+<div id="header"><span th:text="${head}">text</span></div>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
-        <dd><a th:href="@{/blogs}">Test bazy danych h2</a></dd>
-        <dd><a th:href="@{/WeatherAppOnline}">Pogoda</a></dd>
-        <dd><a th:href="@{/Calc}">Kalkulator</a></dd>
-        <dd><a th:href="@{/PassGen}">Prosty generator haseł</a></dd>
-        <dt>MOJE PROFILE</dt>
+        <dd><a th:href="@{/blogs}"><span th:text="${blog}">text</span></a></dd>
+        <dd><a th:href="@{/WeatherAppOnline}"><span th:text="${weather}">text</span></a></dd>
+        <dd><a th:href="@{/Calc}"><span th:text="${calc}">text</span></a></dd>
+        <dd><a th:href="@{/PassGen}"><span th:text="${pass}">text</span></a></dd>
+        <!--Profile-->
+        <dt><span th:text="${profiles}">text</span></dt>
         <dd><a href="https://www.facebook.com/nieistotne12361/">Facebook</a></dd>
         <dd><a href="https://github.com/Sylwester12351">GitHub</a></dd>
-        <dt>Mój adres kontaktowy Email</dt>
+        <dt><span th:text="${email}">text</span></dt>
         <dd><a>sylgaw98fm@gmail.com </a></dd>
     </dl>
 </div>
 <div id="content">
-    Witam na mojej stronie !
-    Pokrótce chciałbym opisać czym się zajmowałem.
-    Ukończyłem technikum elektryczne o profilu technik informatyk ponieważ praca z komputerami zawsze była moją pasją.
-    Pierwszym ciekawym samodzielnym projektem było napisanie gry multi-player o podobnych zasadach rozgrywki do Counter-Strike ale także posiadała
-    mechanizm opadania pocisku nie był to najzwyklejszy raycasting, grę tworzyłem na silniku Unity 5 kod pisałem w języku C#.
-    Obecnie zajmuję się językiem Java w którym pisałem projekty takie jak generator haseł, pobieranie wyświetlanie pogody i tworzenie wykresu na podstawie tych informacji,
-    konwersja na język mors-a, wysyłanie
-    wiadomości mail i obecną stronę używając framework-a Spring strona działa także na moim własnym prywatnym serwerze.
-    W dalszym ciągu chcę rozwijać swoje pasje oraz poszerzać horyzonty.
-    Zapraszam do obejrzenia mikro-serwisów znajdujących się po lewej stronie w menu ! Wszystkie projekty java jak i kod źródłowy tej strony znajduje się
-    na moim profilu GitHub.
-
+    <span th:text="${content}">text</span>
 </div>
 <div id="right"><h4><span th:text="${date}">DATE</span></h4></div>
-<div id="footer">Strona postawiona na własnym serwerze RPI 3b+ </div>
+<div id="footer"><span th:text="${foot}">text</span></div>
 </body>
 
 </html>

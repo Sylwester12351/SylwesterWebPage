@@ -6,16 +6,16 @@
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<div id="header">Twoje hasło</div>
+<div id="header"><span th:text="${header}">text</span></div>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
-        <dd><a th:href="@{/}">Powrót</a></dd>
+        <dd><a th:href="@{/}"><span th:text="${back}">text</span></a></dd>
     </dl>
 </div>
 <div id="content"><h2><span th:text="${wynikgen}">coś</span></h2></div>
 <div id="right"><h4><span th:text="${date}">DATE</span></h4></div>
-<div id="footer">Strona postawiona na własnym serwerze RPI 3b+ </div>
+<div id="footer"><span th:text="${foot}">text</span></div>
 </body>
 
 </html>
