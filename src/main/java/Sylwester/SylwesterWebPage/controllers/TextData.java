@@ -5,8 +5,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TextData {
 
-    private String error_PL = "Coś poszło nie tak przykro mi :(";
-
     // ALL
     //pl
     private String footer_PL = "Strona postawiona na własnym serwerze RPI 3b+ ";
@@ -16,7 +14,7 @@ public class TextData {
     // ALL END
 
     // POLISH HOME
-    private String homeHeader_PL = "Witaj na mojej stronie ! Welcome !! 1.0.4";
+    private String homeHeader_PL = "Witaj na mojej stronie ! Welcome !! 1.0.5 Strona nadal w rozwoju ";
     private String homeContent_PL ="Witam na mojej stronie !\n" +
         "    Pokrótce chciałbym opisać czym się zajmowałem.\n" +
         "    Ukończyłem technikum elektryczne o profilu technik informatyk ponieważ praca z komputerami zawsze była moją pasją.\n" +
@@ -28,7 +26,8 @@ public class TextData {
         "    W dalszym ciągu chcę rozwijać swoje pasje oraz poszerzać horyzonty.\n" +
         "    Zapraszam do obejrzenia mikro-serwisów znajdujących się po lewej stronie w menu ! Wszystkie projekty java jak i kod źródłowy tej strony znajduje się\n" +
         "    na moim profilu GitHub.";
-    private String homeMenuBlog_PL = "Test bazy danych h2";
+    private String homeMenuBlog_PL = "Test bazy danych h2 login User hasło user";
+    private String homeMenuRegister_PL = "Rejestracja nie aktywna";
     private String homeMenuWeather_PL = "Pogoda";
     private String homeMenuCalc_PL = "Kalkulator";
     private String homeMenuPass_PL = "Prosty generator haseł";
@@ -63,10 +62,31 @@ public class TextData {
 
     // POLISH BLOG
     private String blogContent = "Przykładowe wpisy możesz dodać własny wpis";
+    private String blogName = "Imię";
+    private String blogTopic = "Temat";
+    private String blogMessage = "Wiadomość";
     // POLISH BLOG END
-    // todo dodać resztę z bloga i dodać język angielski
 
 
+    public String getHomeMenuRegister_PL() {
+        return homeMenuRegister_PL;
+    }
+
+    public String getBlogContent() {
+        return blogContent;
+    }
+
+    public String getBlogName() {
+        return blogName;
+    }
+
+    public String getBlogTopic() {
+        return blogTopic;
+    }
+
+    public String getBlogMessage() {
+        return blogMessage;
+    }
 
     public String getFooter_PL() {
         return footer_PL;
@@ -164,7 +184,4 @@ public class TextData {
         return passGenHeaderResult;
     }
 
-    public String getError_PL() {
-        return error_PL;
-    }
 }

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 public class Blog {
-
+    // nazwy zmiennych i tak dalej zostały zmienione dla testu bo cała mechanika wpisywania do bazy danych działa prawidłowo i trzeba sprawdzić czy będę również działała z użytkownikami
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -24,22 +24,6 @@ public class Blog {
     private String message;
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Blog blog = (Blog) o;
-        return id == blog.id &&
-                name.equals(blog.name) &&
-                topic.equals(blog.topic) &&
-                message.equals(blog.message);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, topic, message);
-    }
-
-    @Override
     public String toString() {
         return "Blog{" +
                 "id=" + id +
@@ -47,6 +31,22 @@ public class Blog {
                 ", topic='" + topic + '\'' +
                 ", message='" + message + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Blog blog = (Blog) o;
+        return id == blog.id &&
+                Objects.equals(name, blog.name) &&
+                Objects.equals(topic, blog.topic) &&
+                Objects.equals(message, blog.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, topic, message);
     }
 
     public long getId() {

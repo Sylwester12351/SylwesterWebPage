@@ -14,6 +14,7 @@ import java.time.LocalDate;
 
 @Controller
 public class BlogController {
+    private TextData textData = new TextData();
     @Autowired
     private BlogRepository blogRepository;
 
@@ -21,6 +22,12 @@ public class BlogController {
     public String blogs(Blog blog,Model model) {
         model.addAttribute("blogs",blogRepository.findAll());
         model.addAttribute("date", LocalDate.now());
+        model.addAttribute("userName", "UserName");
+        model.addAttribute("back",textData.getBack_PL());
+        model.addAttribute("content",textData.getBlogContent());
+        model.addAttribute("nameT",textData.getBlogName());
+        model.addAttribute("topicT",textData.getBlogTopic());
+        model.addAttribute("messageT",textData.getBlogMessage());
         return "DataBaseTest";
     }
     @PostMapping("/blogs")

@@ -18,6 +18,7 @@ public class MainController {
        model.addAttribute("date", LocalDate.now());
        model.addAttribute("head",textData.getHomeHeader_PL());
        model.addAttribute("blog",textData.getHomeMenuBlog_PL());
+       model.addAttribute("regist",textData.getHomeMenuRegister_PL());
        model.addAttribute("weather",textData.getHomeMenuWeather_PL());
        model.addAttribute("calc",textData.getHomeMenuCalc_PL());
        model.addAttribute("pass",textData.getHomeMenuPass_PL());
@@ -30,6 +31,13 @@ public class MainController {
 
     @GetMapping("/WeatherAppOnline")
     public String weather(Model model){
+
+        /**
+         * Fix error
+         */
+        getTemp.setCity("Krakow"); // Ground state, so that there are no errors
+        getTemp.setCountry("pl");
+
         getTemp.convert();
         String temp = getTemp.getTemperature();
         model.addAttribute("date", LocalDate.now());
@@ -82,7 +90,12 @@ public class MainController {
     }
     @GetMapping("/error")
     public String errorPage(Model model){
-        model.addAttribute("header",textData.getError_PL());
         return "error";
     }
+
+    @GetMapping("/register")
+    public String registerPage(Model model){return "register";}
+
+    @GetMapping("/TESTER")
+    public String testPage(Model model){return "TESTER";}
 }

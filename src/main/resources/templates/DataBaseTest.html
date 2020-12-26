@@ -10,16 +10,16 @@
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
-        <dd><a th:href="@{/}">Powrót</a></dd>
+        <dd><a th:href="@{/}"><span th:text="${back}">text</span></a></dd>
     </dl>
 </div>
-<div id="content">Przykładowe wpisy możesz dodać własny wpis
+<div id="content"><span th:text="${content}">text</span>
     <table border="2">
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Topic</th>
-            <th>Message</th>
+            <th><span th:text="${nameT}">text</span></th>
+            <th><span th:text="${topicT}">text</span></th>
+            <th><span th:text="${messageT}">text</span></th>
         </tr>
         <tr th:each ="Blog : ${blogs}">
             <td th:utext="${Blog.id}">...</td>
@@ -30,18 +30,18 @@
     </table>
     <br>
 </div>
-<div id="right"><h4><span th:text="${date}">DATE</span><br></h4>
+<div id="right"><h4><span th:text="${date}">DATE</span><br></h4><h4><span th:text="${userName}">USERNAME</span><br></h4>
     <div>
         <form action="#" th:action="@{/blogs}" th:object="${blog}" method="post">
-            <label for="name">Imię</label>
+            <label for="name"><span th:text="${nameT}">text</span></label>
             <input type="text" th:field="*{name}" id="name" placeholder="name">
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
             <br>
-            <label for="topic">Temat</label>
+            <label for="topic"><span th:text="${topicT}">text</span></label>
             <input type="text" th:field="*{topic}" id="topic" placeholder="topic">
             <span th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></span>
             <br>
-            <label for="message">Wiadomość</label>
+            <label for="message"><span th:text="${messageT}">text</span></label>
             <input type="text" th:field="*{message}" id="message" placeholder="message">
             <span th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></span>
             <br>
