@@ -26,11 +26,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/blogs").hasRole("USER") // ("/blogs")
-                .antMatchers("/register").permitAll()
-                .anyRequest().permitAll()
+                .antMatchers("*.html").permitAll()
                 .and()
                 .formLogin().permitAll();
-
+        http.csrf().disable();
     }
 
 }

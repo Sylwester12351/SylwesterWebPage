@@ -14,7 +14,7 @@ public class TextData {
     // ALL END
 
     // POLISH HOME
-    private String homeHeader_PL = "Witaj na mojej stronie ! Welcome !! 1.0.5 Strona nadal w rozwoju ";
+    private String homeHeader_PL = "Witaj na mojej stronie ! Welcome !! Wersja 1.0.5b  Wersja poprawiona Uwaga strona nadal w rozwoju ! ";
     private String homeContent_PL ="Witam na mojej stronie !\n" +
         "    Pokrótce chciałbym opisać czym się zajmowałem.\n" +
         "    Ukończyłem technikum elektryczne o profilu technik informatyk ponieważ praca z komputerami zawsze była moją pasją.\n" +
