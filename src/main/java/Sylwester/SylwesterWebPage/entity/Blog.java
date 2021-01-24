@@ -1,17 +1,18 @@
 package Sylwester.SylwesterWebPage.entity;
 
+import org.springframework.security.core.Authentication;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
 public class Blog {
-    // nazwy zmiennych i tak dalej zostały zmienione dla testu bo cała mechanika wpisywania do bazy danych działa prawidłowo i trzeba sprawdzić czy będę również działała z użytkownikami
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotBlank(message = "name is mandatory")
     @Column(name = "name")
     private String name;
 

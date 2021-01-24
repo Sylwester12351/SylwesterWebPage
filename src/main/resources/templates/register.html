@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
-</head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
 <body>
-<!--NIE AKTYWNE-->
-<h1>Register</h1>
-<!--<form action="/register" method="post" >-->
-    <label>Username:</label>
-    <input type="text" name="username" required><br><br>
-    <label>Password:</label>
-    <input type="password" name="password"><br><br>
-    <!--<input type="submit" value="Register">-->
-</form>
+<div class="container">
+    <div>
+        <h1>Rejestracja nowego użytkownika</h1>
+    </div >
+    <form class="form-signin" th:action="@{/process_register}" th:object="${user}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Nick: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{nick}" class="form-control" required minlength="6" maxlength="45"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Hasło: </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{password}" class="form-control"
+                           required minlength="6" maxlength="64"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Imię: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{firstName}" class="form-control"
+                           required minlength="3" maxlength="20"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Nazwisko: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{lastName}" class="form-control"
+                           required minlength="3" maxlength="20" />
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Zarejestruj</button>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

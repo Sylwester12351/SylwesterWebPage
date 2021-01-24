@@ -3,6 +3,7 @@ html {
 	color: #000;
 	margin: 0;
 	padding: 0;
+	min-height: 100%;
 }
 body {
 	margin: 0 auto;
@@ -10,10 +11,7 @@ body {
         display: block;
 	width: 100%;
         overflow: auto;
-}
-table {
-    width: 100%;
-
+        height: 100%;
 }
 #header {
         width:100%;
@@ -22,32 +20,37 @@ table {
 }
 #left {
 	width: 200px;
-	min-height: 280px;
+	min-height: 350px;
 	float: left;
 	overflow: hidden;
 	background-color: #ccc;
 }
 #right {
 	width: 200px;
-	min-height: 280px;
+	min-height: 350px;
 	float: right;
 	overflow: hidden;
 	background-color: #ccc;
 }
 #content {
-	min-width: 600px;
-	float: center;
-	overflow: hidden;
-	background-color: #ffffca;
-	margin: 0;
+    min-width: 400px;
+    float: revert;
+    overflow: hidden;
+    background-color: #ffffca;
+    margin: auto;
 }
 #footer {
 	clear: both;
 	width: 100%;
 	background-color: #888;
-	ul, ul li {
-	display: block;
-	list-style: none;
-	margin: 0;
-	padding: 0;
+}
+progress {
+  color: #0063a6;
+  font-size: .6em;
+  line-height: 1.5em;
+  text-indent: .5em;
+  width: 15em;
+  height: 1.8em;
+  border: 1px solid #0063a6;
+  background: #fff;
 }

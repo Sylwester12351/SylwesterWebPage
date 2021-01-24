@@ -1,42 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Test data base</title>
+    <title>Pseudo "Blog"</title>
     <link rel="stylesheet" th:href="@{/css/styleBlog.css}"/>
 </head>
 <body>
-<div id="header">Test data base</div>
-<div id="left">
-    <dl style="">
-        <dt>MENU</dt>
-        <dd><a th:href="@{/}"><span th:text="${back}">text</span></a></dd>
-    </dl>
-</div>
-<div id="content"><span th:text="${content}">text</span>
-    <table border="2">
-        <tr>
-            <th>ID</th>
-            <th><span th:text="${nameT}">text</span></th>
-            <th><span th:text="${topicT}">text</span></th>
-            <th><span th:text="${messageT}">text</span></th>
-        </tr>
-        <tr th:each ="Blog : ${blogs}">
-            <td th:utext="${Blog.id}">...</td>
-            <td th:utext="${Blog.name}">...</td>
-            <td th:utext="${Blog.topic}">...</td>
-            <td th:utext="${Blog.message}">...</td>
-        </tr>
-    </table>
-    <br>
-</div>
-<div id="right"><h4><span th:text="${date}">DATE</span><br></h4><h4><span th:text="${userName}">USERNAME</span><br></h4>
+
+<div id="header">Pseudo "Blog"</div>
+
+<div id="right"><h4><span th:text="${date}">DATE</span></h4>
     <div>
-        <form action="#" th:action="@{/blogs}" th:object="${blog}" method="post">
-            <label for="name"><span th:text="${nameT}">text</span></label>
-            <input type="text" th:field="*{name}" id="name" placeholder="name">
-            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-            <br>
+        <form sec:authorize="isAuthenticated()"  action="#" th:action="@{/blogs}" th:object="${blog}" method="post">
             <label for="topic"><span th:text="${topicT}">text</span></label>
             <input type="text" th:field="*{topic}" id="topic" placeholder="topic">
             <span th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></span>
@@ -49,6 +24,30 @@
         </form>
     </div>
 </div>
+
+<div id="left">
+    <dl style="">
+        <dt>MENU</dt>
+        <dd><a th:href="@{/}"><span>Powrót</span></a></dd>
+    </dl>
+</div>
+
+<div id="content"><span>Przykładowe wpisy możesz dodać własny wpis. Tylko zalogowani użytkownicy mogą dodawać wpisy !</span>
+    <table border="1">
+        <tr>
+            <th><span>Nick</span></th>
+            <th><span>Temat</span></th>
+            <th><span>Wiadomość</span></th>
+        </tr>
+        <tr th:each ="Blog : ${blogs}">
+            <td th:utext="${Blog.name}">...</td>
+            <td th:utext="${Blog.topic}">...</td>
+            <td th:utext="${Blog.message}">...</td>
+        </tr>
+    </table>
+    <br>
+</div>
+
 <div id="footer">Strona postawiona na własnym serwerze RPI 3b+ </div>
 </body>
 </html>

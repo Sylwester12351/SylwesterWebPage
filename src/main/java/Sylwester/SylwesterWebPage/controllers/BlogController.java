@@ -3,6 +3,8 @@ package Sylwester.SylwesterWebPage.controllers;
 import Sylwester.SylwesterWebPage.entity.Blog;
 import Sylwester.SylwesterWebPage.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,27 +16,24 @@ import java.time.LocalDate;
 
 @Controller
 public class BlogController {
-    private TextData textData = new TextData();
+
     @Autowired
     private BlogRepository blogRepository;
 
     @GetMapping("/blogs")
-    public String blogs(Blog blog,Model model) {
+    public String blogs(Model model) {
+        model.addAttribute("blog", new Blog());
         model.addAttribute("blogs",blogRepository.findAll());
         model.addAttribute("date", LocalDate.now());
-        model.addAttribute("userName", "UserName");
-        model.addAttribute("back",textData.getBack_PL());
-        model.addAttribute("content",textData.getBlogContent());
-        model.addAttribute("nameT",textData.getBlogName());
-        model.addAttribute("topicT",textData.getBlogTopic());
-        model.addAttribute("messageT",textData.getBlogMessage());
+
         return "DataBaseTest";
     }
     @PostMapping("/blogs")
-    public String addUser(@Valid Blog blog, BindingResult result, Model model) {
+    public String addUser(@Valid Blog blog, BindingResult result, Model model,Authentication authentication) {
         if (result.hasErrors()) {
             return "error";
         }
+        blog.setName(authentication.getName());
         blogRepository.save(blog);
         return "redirect:/blogs";
     }

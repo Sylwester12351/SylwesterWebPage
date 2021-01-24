@@ -3,13 +3,15 @@ html {
 	color: #000;
 	margin: 0;
 	padding: 0;
+	min-height: 100%;
 }
 body {
 	margin: 0 auto;
 	padding: 0;
         display: block;
-	width: 1004px;
+	width: 100%;
         overflow: auto;
+        height: 100%;
 }
 #header {
         width:100%;
@@ -18,32 +20,33 @@ body {
 }
 #left {
 	width: 200px;
-	height: 250px;
+	height: 248px;
 	float: left;
 	overflow: hidden;
 	background-color: #ccc;
 }
 #right {
 	width: 200px;
-	height: 250px;
+	height: 248px;
 	float: right;
 	overflow: hidden;
 	background-color: #ccc;
 }
 #content {
-	width: 604px;
-	float: left;
-	overflow: hidden;
-	background-color: #fff;
-	margin: 0;
+    min-width: 400px;
+    float: revert;
+    overflow: hidden;
+    background-color: #ffffca;
+    margin: auto;
 }
 #footer {
 	clear: both;
 	width: 100%;
 	background-color: #888;
-	ul, ul li {
-	display: block;
-	list-style: none;
-	margin: 0;
-	padding: 0;
+}
+
+#headerTextRight{
+ float: right;
+ color: white;
+ padding-right: 10px;
 }
