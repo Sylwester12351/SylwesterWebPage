@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HatterController {
     @GetMapping("/Hatter")
-    public String weather(Model model){
+    public String hatterPage(Model model){
         return "Hatter";
     }
 }

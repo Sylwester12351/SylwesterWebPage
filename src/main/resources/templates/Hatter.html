@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" th:href="@{/css/styleHatter.css}"/>
+<link rel="shortcut icon" type="image/ico" th:href="@{/hatter.ico}"/>
 <head>
     <meta charset="UTF-8">
     <title>Hatter </title>
 </head>
 <body>
 <div id="header">
-    <h1>STRONA W ROZWOJU !</h1>
+    <div id="time" style="color: red;" ></div>
     <span>Hatter</span></span>
 </div>
 
 <div id="right"><h4><span th:text="${date}">DATE</span></h4>
-
     <span>Level</span>
     <span>0</span>
     <br>
@@ -22,7 +22,7 @@
     <br>
     <span>Statystyki główne</span>
     <br>
-    <img width="30" height="30" th:src="@{/images-hatter/heart.png}">
+    <img width="30" height="30" th:src="@{/images-hatter/heart.gif}">
     <progress max="100" value="100">Live</progress>
     <img width="30" height="30" th:src="@{/images-hatter/armor.png}">
     <progress max="100" value="50">Armor</progress>
@@ -69,4 +69,15 @@
 </body>
 </html>
 </body>
+<!--CLOCK code-->
+<script type="text/javascript">
+function getTime()
+{
+    return (new Date()).toLocaleTimeString();
+}
+document.getElementById('time').innerHTML = getTime();
+setInterval(function() {
+    document.getElementById('time').innerHTML = getTime();
+}, 1000);
+</script>
 </html>

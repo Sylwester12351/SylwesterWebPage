@@ -20,14 +20,14 @@ body {
 }
 #left {
 	width: 200px;
-	height: 248px;
+	height: 290px;
 	float: left;
 	overflow: hidden;
 	background-color: #ccc;
 }
 #right {
 	width: 200px;
-	height: 248px;
+	height: 290px;
 	float: right;
 	overflow: hidden;
 	background-color: #ccc;

@@ -69,6 +69,6 @@ public class MainController {
         return "error";
     }
 
-    @GetMapping("/TESTER")
-    public String testPage(Model model){return "TESTER";}
+    @GetMapping("/favicon.ico")
+    public String jokePage(Model model){return "IconEgg";}
 }

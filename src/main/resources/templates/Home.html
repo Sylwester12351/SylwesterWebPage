@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" type="image/ico" th:href="@{/favicon.ico}"/>
+<!--    ^^^^ Icon-->
 </head>
 <body>
 
@@ -11,7 +13,9 @@
     <span>Witaj! Na stronie głównej </span> <span id="headerTextRight" th:text="${userName}"></span>
 </div>
 
-<div id="right"><h4><span th:text="${date}">DATE</span></h4></div>
+<div id="right"><h4><span th:text="${date}">DATE</span></h4>
+    <div id="time" style="color: red;" ></div>
+</div>
 
 <div id="left">
     <dl style="">
@@ -19,7 +23,7 @@
         <dd><a th:href="@{/login}"><span>Logowanie</span></a></dd>
         <dd><a th:href="@{/register}"><span>Rejestracja</span></a></dd>
         <dd><a th:href="@{/blogs}"><span>"Blog"</span></a></dd>
-        <dd><a th:href="@{/Hatter}"><span>Gra Hatter nadal nad tym pracuję !</span></a></dd>
+        <dd><a th:href="@{/Hatter}"><span>Gra Hatter</span></a></dd>
         <dd><a th:href="@{/WeatherAppOnline}"><span>Pogoda</span></a></dd>
         <dd><a th:href="@{/Calc}"><span>Kalkulator</span></a></dd>
         <dd><a th:href="@{/PassGen}"><span>Generator haseł</span></a></dd>
@@ -46,9 +50,20 @@
 </div>
 
 <footer id="footer">
-    <p>Strona postawiona na własnym serwerze RPI 3b+ Wersja 1.0.6</p>
+    <p>Strona postawiona na własnym serwerze RPI 3b+ Wersja 1.0.7</p>
 </footer>
 </body>
+<!--CLOCK code-->
+<script type="text/javascript">
+function getTime()
+{
+    return (new Date()).toLocaleTimeString();
+}
+document.getElementById('time').innerHTML = getTime();
+setInterval(function() {
+    document.getElementById('time').innerHTML = getTime();
+}, 1000);
+</script>
 </html>
 <!--<img th:src="@{/images/......png}" sec:authorize="isAuthenticated()"  i do gry "Hatter" gra luźno inspirowana grą przeglądarkową "Omerta" gra aktualnie nazywa się
     chyba jednak inaczej :D A więc w grze chodzi aby przetrwać i wyeliminować innych graczy aby to zrobić należy kupować amunicje i atakować graczy aby mieć pieniądze
