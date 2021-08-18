@@ -5,6 +5,11 @@ html {
 	padding: 0;
 	min-height: 100%;
 }
+.myDiv {
+  border: 4px outset black;
+  background-color: lightblue;
+  text-align: center;
+}
 body {
 	margin: 0 auto;
 	padding: 0;
@@ -54,3 +59,8 @@ progress {
   border: 1px solid #0063a6;
   background: #fff;
 }
+.hoverText:hover{
+background: #4682B4;
+border-radius: 5px;
+}
+

@@ -15,7 +15,6 @@ public class MainController {
 
     @RequestMapping("/")
     public String mainPage(Model model, Authentication authentication){
-
         if (authentication != null){
             model.addAttribute("userName",authentication.getName()+" "+"Zalogowany !");
         }else {

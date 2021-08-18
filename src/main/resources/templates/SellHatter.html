@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" th:href="@{/css/styleHatter.css}"/>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sell</title>
 </head>
 <body>
-
+<div id="header"><span>Sprzedaj</span></div>
+<div id="left">
+    <dl style="">
+        <dt>MENU</dt>
+        <dd class="hoverText"><a style="display:block" th:href="@{/Hatter}"><span>Powrót</span></a></dd>
+    </dl>
+</div>
+<div id="content"><span>Przy nie udanej próbie sprzedaży trafiasz do więzienia na określony czas w tym czasie nie jesteś w stanie wykonać żadnej akcji</span>
+    <dl style="">
+        <dt><span>Sprzedaj swoje towary</span></dt>
+        <dd><form action="#" th:action="@{/SellHatterAMF}" method="post">
+            Amfetamina : <input min="1" type="number" step="1" name="Amphet" />
+            <input type="submit" value="Wykonaj" />
+            <br>
+        </form></dd>
+        <dd><form action="#" th:action="@{/SellHatterTHC}" method="post">
+            Marihuana : <input min="1" type="number" step="1" name="THC" />
+            <input type="submit" value="Wykonaj" />
+            <br>
+        </form></dd>
+        <dd><form action="#" th:action="@{/SellHatterCOC}" method="post">
+            Kokaina : <input min="1" type="number" step="1" name="COC" />
+            <input type="submit" value="Wykonaj" />
+            <br>
+        </form></dd>
+    </dl>
+</div>
+<div id="right"><h4></h4>
+    <div id="time" style="color: red;" ></div>
+    <div th:each="eco : ${COST}"><h4>Ceny zysk za jednostkę:</h4>
+        <span>Amfetamina</span>
+        <span th:utext="${eco.priceAmphetamine}">0</span>
+        <br>
+        <span>THC</span>
+        <span th:utext="${eco.priceMarijuana}">0</span>
+        <br>
+        <span>Kokaina</span>
+        <span th:utext="${eco.priceCocaine}">0</span>
+        <br>
+    </div>
+</div>
+<div id="footer"><span>Strona postawiona na własnym serwerze RPI 3b+ </span></div>
 </body>
 <!--CLOCK code-->
 <script type="text/javascript">

@@ -25,7 +25,6 @@ public class BlogController {
         model.addAttribute("blog", new Blog());
         model.addAttribute("blogs",blogRepository.findAll());
         model.addAttribute("date", LocalDate.now());
-
         return "DataBaseTest";
     }
     @PostMapping("/blogs")

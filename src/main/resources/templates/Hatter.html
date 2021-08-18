@@ -9,62 +9,77 @@
 <body>
 <div id="header">
     <div id="time" style="color: red;" ></div>
-    <span>Hatter</span></span>
+    <span>Hatter Wersja Alpha</span></span>
 </div>
 
-<div id="right"><h4><span th:text="${date}">DATE</span></h4>
+<div th:each="player : ${Hatter}" id="right"><h4><span th:text="${date}">DATE</span></h4>
     <span>Level</span>
-    <span>0</span>
+    <span th:utext="${player.playerLvl}">0</span>
     <br>
     <span>Doświadczenie</span>
-    <span>0</span>
+    <span th:utext="${player.playerExp}">0</span>
     <br>
     <br>
     <span>Statystyki główne</span>
     <br>
     <img width="30" height="30" th:src="@{/images-hatter/heart.gif}">
-    <progress max="100" value="100">Live</progress>
+    <progress max="100" th:value="${player.playerHp}">Live</progress>
     <img width="30" height="30" th:src="@{/images-hatter/armor.png}">
-    <progress max="100" value="50">Armor</progress>
+    <progress max="100" th:value="${player.playerArmor}">Armor</progress>
     <br>
     <img width="30" height="30" th:src="@{/images-hatter/money.png}">
-    <span>0</span>
+    <span th:utext="${player.playerMoney}"></span>
     <br>
     <img width="30" height="30" th:src="@{/images-hatter/bullet.png}">
-    <span>0</span>
+    <span th:utext="${player.playerBullet}">0</span>
     <br>
     <span>Przedmioty "ilość" :</span>
     <br>
     <br>
     <span>Marihuana</span>
-    <span>0</span>
+    <span th:utext="${player.playerMarijuana}">0</span>
     <br>
     <span>Amfetamina</span>
-    <span>0</span>
+    <span th:utext="${player.playerAmphetamine}">0</span>
     <br>
     <span>Kokaina</span>
-    <span>0</span>
+    <span th:utext="${player.playerCocaine}">0</span>
 
 </div>
 
 <div id="left">
+    <dd class="hoverText"><a style="display:block" th:href="@{/}"><span>Powrót na stronę główną</span></a></dd>
     <dl style="">
-        <dt>MENU</dt>
-        <dd><a th:href="@{/}"><span>Powrót na stronę główną</span></a></dd>
+        <dt>Aktywne bonusy i stany gracza</dt>
+
     </dl>
 </div>
 
 <div id="content">
-<span>Akcje</span>
-    <a th:href="@{/}"><span>Kup</span></a></dd>
-    <a th:href="@{/}"><span>Sprzedaj</span></a></dd>
-    <a th:href="@{/}"><span>Napad</span></a></dd>
-    <a th:href="@{/}"><span>Zabójstwo</span></a></dd>
-    <br>
+    <div class="myDiv">
+        <a style="color: grey;">Handel</a>
+        <br>
+        <a class="hoverText" style="display:block" th:href="@{/BuyHatter}"><span>Kup</span></a></dd>
+        <br>
+        <a class="hoverText" style="display:block"  th:href="@{/SellHatter}"><span>Sprzedaj</span></a></dd>
+        <br>
+        <a class="hoverText" style="display:block"  th:href="@{/}"><span>Rynek</span></a></dd>
+        <br>
+        <a style="color: grey;">Akcje na graczach</a>
+        <br>
+        <a class="hoverText" style="display:block"  th:href="@{/AttackHatter}"><span>Zabójstwo</span></a></dd>
+        <br>
+        <a class="hoverText" style="display:block"  th:href="@{/}"><span>Wyśli szpiega</span></a></dd>
+        <br>
+        <a style="color: grey;">Dodatkowe</a>
+        <br>
+        <a class="hoverText" style="display:block"  th:href="@{/}"><span>Napad</span></a></dd>
+        <br>
+    </div>
 </div>
 
 <footer id="footer">
-    <p>Strona postawiona na własnym serwerze RPI 3b+</p>
+    <p>Ubuntu-Server</p>
 </footer>
 </body>
 </html>

@@ -43,3 +43,7 @@ body {
 	width: 100%;
 	background-color: #888;
 }
+.hoverText:hover{
+background: #4682B4;
+border-radius: 5px;
+}

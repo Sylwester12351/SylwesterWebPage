@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Więzienie</title>
+</head>
+<body>
+<center><dd class="hoverText"><a style="display:block" th:href="@{/Hatter}"><span>Powrót</span></a></dd>
+    <div th:each="player : ${Prison}" id="right"><h4></h4>
+        <h1>Trafiłeś do więzienia do godziny :</h1>
+        <span th:utext="${player.playerTimeInPrison}">0</span>
+        <img width="300" height="300" th:src="@{/images-hatter/prison.png}">
+    </div></center>
+<div id="time" style="color: red;" ></div>
+</body>
+<script type="text/javascript">
+function getTime()
+{
+    return (new Date()).toLocaleTimeString();
+}
+document.getElementById('time').innerHTML = getTime();
+setInterval(function() {
+    document.getElementById('time').innerHTML = getTime();
+}, 1000);
+</script>
+</html>
