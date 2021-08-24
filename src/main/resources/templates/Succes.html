@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>Succes !</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/button.css}"/>
 </head>
 <body>
-<h1 id="content">Zostałeś zarejestrowany możesz teraz skorzystać z dodatkowych funkcji mojej strony</h1>
-<a class="hoverText" style="display:block" th:href="@{/}"> Wróć na stronę główną ! </a>
-<br>
-<a class="hoverText" style="display:block" th:href="@{/login}">Logowanie</a>
+<center>
+    <h1>Zostałeś zarejestrowany możesz teraz skorzystać z dodatkowych funkcji mojej strony</h1>
+    <a class="button" th:href="@{/}">Wracam na główną</a>
+    <a class="button" th:href="@{/login}">Zaloguj</a>
+</center>
+
 </body>
 </html>

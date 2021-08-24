@@ -43,6 +43,7 @@ public class HatterSellController {
             return "DeadHatter";
         }
     }
+//    TODO
     @RequestMapping("/SellHatterAMF")
     public String sellHatterAMF(Model model, Authentication authentication, Integer Amphet){
         return "error";

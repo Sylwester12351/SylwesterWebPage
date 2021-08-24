@@ -43,6 +43,7 @@ body {
 	clear: both;
 	width: 100%;
 	background-color: #888;
+	bottom: 0;
 }
 
 #headerTextRight{

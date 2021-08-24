@@ -3,40 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/Home.css}"/>
     <link rel="shortcut icon" type="image/ico" th:href="@{/favicon.ico}"/>
 <!--    ^^^^ Icon-->
 </head>
 <body>
+<div id="container">
+    <div id="header">
+        <span id="headerTextRight" th:text="${userName}"></span>
+        <br>
+            <ul>
+                <li>MENU</li>
+                <li><a th:href="@{/login}">Logowanie</a></li>
+                <li><a th:href="@{/register}">Rejestracja</a></li>
+                <li> <a th:href="@{/logout}">Wyloguj</a></li>
+                <li> <a th:href="@{/blogs}">"Blog"</a></li>
+                <li> <a th:href="@{/Hatter}">Gra Hatter</a></li>
+                <li> <a th:href="@{/WeatherAppOnline}">Pogoda</a></li>
+                <li> <a th:href="@{/Calc}">Kalkulator</a></li>
+                <li> <a th:href="@{/PassGen}">Generator haseł</a></li>
+                <!--Profile-->
+                <!--    <li><span>MOJE PROFILE</span></li>-->
+                <li> <a href="https://www.facebook.com/sgfm1998/">Facebook</a></li>
+                <li> <a href="https://github.com/Sylwester12351">GitHub</a></li>
+                <li><span>Email kontaktowy</span></li>
+                <li> sylgaw98fm@gmail.com </li>
+            </ul>
+    </div>
 
-<div id="header">
-    <span>Witaj! Na stronie głównej </span> <span id="headerTextRight" th:text="${userName}"></span>
-</div>
-
-<div id="right"><h4><span th:text="${date}">DATE</span></h4>
-    <div id="time" style="color: red;" ></div>
-</div>
-
-<div id="left">
-    <dl style="">
-        <dt>MENU</dt>
-        <dd class="hoverText"><a style="display:block" th:href="@{/login}">Logowanie</a></dd>
-        <dd class="hoverText"><a style="display:block" th:href="@{/register}">Rejestracja</a></dd>
-        <dd class="hoverText"><a style="display:block" th:href="@{/blogs}">"Blog"</a></dd>
-        <dd class="hoverText"><a style="display:block" th:href="@{/Hatter}">Gra Hatter</a></dd>
-        <dd class="hoverText"><a style="display:block" th:href="@{/WeatherAppOnline}">Pogoda</a></dd>
-        <dd class="hoverText"><a style="display:block" th:href="@{/Calc}">Kalkulator</a></dd>
-        <dd class="hoverText"><a style="display:block" th:href="@{/PassGen}">Generator haseł</a></dd>
-        <!--Profile-->
-        <dt><span>MOJE PROFILE</span></dt>
-        <dd class="hoverText"><a style="display:block" href="https://www.facebook.com/nieistotne12361/">Facebook</a></dd>
-        <dd class="hoverText"><a style="display:block" href="https://github.com/Sylwester12351">GitHub</a></dd>
-        <dt><span>Email kontaktowy</span></dt>
-        <dd><a>  sylgaw98fm@gmail.com  </a></dd>
-    </dl>
-</div>
-
-<div id="content">
+    <div style="padding: 20px">
     <span>Witam na mojej stronie ! Pokrótce chciałbym opisać czym się zajmowałem.
         Ukończyłem technikum elektryczne o profilu technik informatyk ponieważ praca z komputerami zawsze była moją pasją.
         Pierwszym ciekawym samodzielnym projektem było napisanie gry multi-player o podobnych zasadach rozgrywki do Counter-Strike
@@ -54,21 +49,13 @@
     i uleczyć nie co pasek zdrowia a więc życzę powodzenia miłej zabawy ! - Przedstawiony opis prezentuje początkowe założenia gry które mogą ulec zmianie chociaż główne założenia się
     raczej nie zmienią może dojść więcej opcji zarobku i takie tam.</span>
 </div>
+<div id="push"></div>
+</div>
+<div id="footer"><footer>
+    <p>Strona postawiona na własnym serwerze Ubuntu-Server Wersja 1.0.7.2</p>
+    <span th:text="${date}">DATE</span>
+</footer></div>
 
-<footer id="footer">
-    <p>Strona postawiona na własnym serwerze RPI 3b+ Wersja 1.0.7.1</p>
-</footer>
 </body>
-<!--CLOCK code-->
-<script type="text/javascript">
-function getTime()
-{
-    return (new Date()).toLocaleTimeString();
-}
-document.getElementById('time').innerHTML = getTime();
-setInterval(function() {
-    document.getElementById('time').innerHTML = getTime();
-}, 1000);
-</script>
 </html>
 <!--<img th:src="@{/images/......png}" sec:authorize="isAuthenticated()"   />-->

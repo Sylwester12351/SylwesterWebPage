@@ -68,6 +68,11 @@ public class MainController {
         return "error";
     }
 
+    @GetMapping("/LogoutSucces")
+    public String logout(Model model){
+        return "LogoutSucces";
+    }
+
     @GetMapping("/favicon.ico")
     public String jokePage(Model model){return "IconEgg";}
 }
