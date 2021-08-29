@@ -7,16 +7,17 @@
     <link rel="shortcut icon" type="image/ico" th:href="@{/favicon.ico}"/>
 <!--    ^^^^ Icon-->
 </head>
-<body>
+<body th:style="'background-image:url(' + @{/images/wallpap.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
 <div id="container">
     <div id="header">
         <span id="headerTextRight" th:text="${userName}"></span>
         <br>
             <ul>
                 <li>MENU</li>
-                <li><a th:href="@{/login}">Logowanie</a></li>
-                <li><a th:href="@{/register}">Rejestracja</a></li>
-                <li> <a th:href="@{/logout}">Wyloguj</a></li>
+                <li> <a th:href="@{/login}" sec:authorize="isAuthenticated() == false" style="background-color:#00AACC;">Logowanie</a></li>
+                <li> <a th:href="@{/logout}" sec:authorize="isAuthenticated()" style="background-color:#00AACC;">Wyloguj</a></li>
+
+                <li> <a th:href="@{/register}" sec:authorize="isAuthenticated() == false" style="background-color:#00AACC;">Rejestracja</a></li>
                 <li> <a th:href="@{/blogs}">"Blog"</a></li>
                 <li> <a th:href="@{/Hatter}">Gra Hatter</a></li>
                 <li> <a th:href="@{/WeatherAppOnline}">Pogoda</a></li>
@@ -26,13 +27,13 @@
                 <!--    <li><span>MOJE PROFILE</span></li>-->
                 <li> <a href="https://www.facebook.com/sgfm1998/">Facebook</a></li>
                 <li> <a href="https://github.com/Sylwester12351">GitHub</a></li>
-                <li><span>Email kontaktowy</span></li>
+                <li> <span>Email kontaktowy</span></li>
                 <li> sylgaw98fm@gmail.com </li>
             </ul>
     </div>
 
     <div style="padding: 20px">
-    <span>Witam na mojej stronie ! Pokrótce chciałbym opisać czym się zajmowałem.
+    <span style="font-weight: bold;">Witam na mojej stronie ! Pokrótce chciałbym opisać czym się zajmowałem.
         Ukończyłem technikum elektryczne o profilu technik informatyk ponieważ praca z komputerami zawsze była moją pasją.
         Pierwszym ciekawym samodzielnym projektem było napisanie gry multi-player o podobnych zasadach rozgrywki do Counter-Strike
         ale także posiadała mechanizm opadania pocisku nie był to najzwyklejszy raycasting, grę tworzyłem na silniku Unity 5 kod pisałem w języku C#.
@@ -41,7 +42,7 @@
         W dalszym ciągu chcę rozwijać swoje pasje oraz poszerzać horyzonty. Zapraszam do obejrzenia mikro-serwisów znajdujących się po lewej stronie w menu !
         Wszystkie projekty java jak i kod źródłowy tej strony znajduje się na moim profilu GitHub.</span><br>
     <br>
-    <span>Zarejestrowani użytkownicy uzyskują dostęp do dodatkowych opcji. Gra "Hatter" gra luźno inspirowana grą przeglądarkową "Omerta" gra aktualnie nazywa się
+    <span style="font-weight: bold;">Zarejestrowani użytkownicy uzyskują dostęp do dodatkowych opcji. Gra "Hatter" gra luźno inspirowana grą przeglądarkową "Omerta" gra aktualnie nazywa się
     chyba jednak inaczej :D A więc w grze chodzi aby przetrwać i wyeliminować innych graczy aby to zrobić należy kupować amunicje i atakować graczy aby mieć pieniądze
     możemy handlować narkotykami i napadać ale uwaga każdy wyższy LVL zwiększa nasze prawdopodobieństwo na sukces akcji a więc na przykład gracz z pierwszym poziomem
     napadając ma ogromne szanse na trafienie do więzienia co odbiera na jakiś czas możliwość wykonywania akcji. Co do atakowania graczy atak jest dostępny od 10 poziomu
@@ -52,10 +53,13 @@
 <div id="push"></div>
 </div>
 <div id="footer"><footer>
-    <p>Strona postawiona na własnym serwerze Ubuntu-Server Wersja 1.0.7.2</p>
-    <span th:text="${date}">DATE</span>
+    <ul>
+        <li>Strona postawiona na własnym serwerze Ubuntu-Server Wersja 1.0.7.2_B</li>
+        <li th:text="${date}" style="color: red">DATE></li>
+    </ul>
+<!--    <p></p>-->
+<!--    <span </span>-->
 </footer></div>
-
 </body>
 </html>
 <!--<img th:src="@{/images/......png}" sec:authorize="isAuthenticated()"   />-->
