@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Succes !</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/css/button.css}"/>
 </head>
-<body>
+<body th:style="'background-image:url(' + @{/images/wallpap2.jpg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
 <center>
-    <h1>Zostałeś zarejestrowany możesz teraz skorzystać z dodatkowych funkcji mojej strony</h1>
+    <h1 style="color:white">Zostałeś zarejestrowany możesz teraz skorzystać z dodatkowych funkcji mojej strony</h1>
     <a class="button" th:href="@{/}">Wracam na główną</a>
     <a class="button" th:href="@{/login}">Zaloguj</a>
 </center>

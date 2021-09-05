@@ -27,7 +27,7 @@
                 <!--    <li><span>MOJE PROFILE</span></li>-->
                 <li> <a href="https://www.facebook.com/sgfm1998/">Facebook</a></li>
                 <li> <a href="https://github.com/Sylwester12351">GitHub</a></li>
-                <li> <span>Email kontaktowy</span></li>
+                <li> <span>Email kontaktowy :</span></li>
                 <li> sylgaw98fm@gmail.com </li>
             </ul>
     </div>
@@ -39,7 +39,7 @@
         ale także posiadała mechanizm opadania pocisku nie był to najzwyklejszy raycasting, grę tworzyłem na silniku Unity 5 kod pisałem w języku C#.
         Obecnie zajmuję się językiem Java w którym pisałem projekty takie jak generator haseł, pobieranie wyświetlanie pogody i tworzenie wykresu na podstawie tych informacji,
         konwersja na język mors-a, wysyłanie wiadomości mail i obecną stronę używając framework-a Spring strona działa także na moim własnym prywatnym serwerze.
-        W dalszym ciągu chcę rozwijać swoje pasje oraz poszerzać horyzonty. Zapraszam do obejrzenia mikro-serwisów znajdujących się po lewej stronie w menu !
+        W dalszym ciągu chcę rozwijać swoje pasje oraz poszerzać horyzonty. Zapraszam do obejrzenia mikro-serwisów znajdujących w menu !
         Wszystkie projekty java jak i kod źródłowy tej strony znajduje się na moim profilu GitHub.</span><br>
     <br>
     <span style="font-weight: bold;">Zarejestrowani użytkownicy uzyskują dostęp do dodatkowych opcji. Gra "Hatter" gra luźno inspirowana grą przeglądarkową "Omerta" gra aktualnie nazywa się
@@ -50,11 +50,21 @@
     i uleczyć nie co pasek zdrowia a więc życzę powodzenia miłej zabawy ! - Przedstawiony opis prezentuje początkowe założenia gry które mogą ulec zmianie chociaż główne założenia się
     raczej nie zmienią może dojść więcej opcji zarobku i takie tam.</span>
 </div>
+<!--ADMIN INFO    -->
+    <div style="padding: 50px">
+        <h3>Wszystkie dodatkowe informacje i zmiany jakie są wprowadzane na mojej stronie czy też planowana aktualizacja zostaną wyświetlone poniżej</h3>
+        <img width="100" height="100" th:src="@{/images/messagebox_warning.png}">
+        <br>
+        <div th:each="info : ${message}">
+            <span th:utext="${info.homeMessage}">blablabla</span>
+        </div>
+
+    </div>
 <div id="push"></div>
 </div>
 <div id="footer"><footer>
     <ul>
-        <li>Strona postawiona na własnym serwerze Ubuntu-Server Wersja 1.0.7.2_B</li>
+        <li>Strona postawiona na własnym serwerze Ubuntu-Server Wersja 1.0.7.3</li>
         <li th:text="${date}" style="color: red">DATE></li>
     </ul>
 <!--    <p></p>-->
