@@ -35,10 +35,16 @@ public class Player {
     private String playerKiller;
 
     @Column(name = "player_hp")
-    private int playerHp;
+    private float playerHp;
+
+    @Column(name = "player_aimhead")
+    private float playerAimHead;
+
+    @Column(name = "player_aimbody")
+    private float playerAimBody;
 
     @Column(name = "player_armor")
-    private int playerArmor;
+    private float playerArmor;
 
     @Column(name = "player_money")
     private int playerMoney;
@@ -96,19 +102,19 @@ public class Player {
         this.id = id;
     }
 
-    public int getPlayerHp() {
+    public float getPlayerHp() {
         return playerHp;
     }
 
-    public void setPlayerHp(int playerHp) {
+    public void setPlayerHp(float playerHp) {
         this.playerHp = playerHp;
     }
 
-    public int getPlayerArmor() {
+    public float getPlayerArmor() {
         return playerArmor;
     }
 
-    public void setPlayerArmor(int playerArmor) {
+    public void setPlayerArmor(float playerArmor) {
         this.playerArmor = playerArmor;
     }
 
@@ -198,6 +204,22 @@ public class Player {
 
     public void setPlayerKiller(String playerKiller) {
         this.playerKiller = playerKiller;
+    }
+
+    public float getPlayerAimHead() {
+        return playerAimHead;
+    }
+
+    public void setPlayerAimHead(float playerAimHead) {
+        this.playerAimHead = playerAimHead;
+    }
+
+    public float getPlayerAimBody() {
+        return playerAimBody;
+    }
+
+    public void setPlayerAimBody(float playerAimBody) {
+        this.playerAimBody = playerAimBody;
     }
 
     @Override

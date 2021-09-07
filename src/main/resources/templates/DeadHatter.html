@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" th:href="@{/css/styleHatter.css}"/>
 <head>
     <meta charset="UTF-8">
     <title>Nie żyjesz</title>
 </head>
-<body>
-<h1>Jesteś martwy !</h1>
+<body th:style="'background-image:url(' + @{/images-hatter/dead.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+<h1 style="color:white">Jesteś martwy !</h1>
+<a th:href="@{/}">
+    <img width="30" height="30" th:src="@{/images/home.png}">
+</a>
 </body>
 </html>

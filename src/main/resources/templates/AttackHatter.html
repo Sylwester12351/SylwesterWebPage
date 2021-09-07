@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Attack</title>
 </head>
 <body>
-
+<center>
+    <div id="content"><span>Wybierz gracza do zaatakowania</span>
+        <table border="1">
+            <tr>
+                <th><span>ID</span></th>
+                <th><span>LVL</span></th>
+                <th><span>NICK</span></th>
+                <th><span>Czy żyje ?</span></th>
+            </tr>
+            <tr th:each ="Player : ${Players}">
+                <td th:utext="${Player.id}">...</td>
+                <td th:utext="${Player.playerLvl}">...</td>
+                <td th:utext="${Player.playerNick}">...</td>
+                <td th:utext="${Player.playerAlive}">...</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+    <div>
+        <form action="#" th:action="@{/AttackHatterATTACK}" method="post">
+            Ilość pocisków : <input min="1" type="number" step="1" name="Bullet" />
+            <br>
+            ID atakowanego gracza : <input min="1" type="number" step="1" name="idPlayer" />
+            <br>
+            <input type="submit" value="Wykonaj" />
+        </form>
+    </div>
+</center>
+<a th:href="@{/Hatter}">
+    <img width="70" height="70" th:src="@{/images/home.png}">
+</a>
 </body>
 <!--CLOCK code-->
 <script type="text/javascript">

@@ -35,6 +35,8 @@ public class RegisterController {
         player.setPlayerHp(100);
         player.setPlayerMoney(450);
         player.setPlayerLvl(1);
+        player.setPlayerAimHead(30);
+        player.setPlayerAimBody(70);
         player.setPlayerTestMode(false);
         player.setPlayerNick(user.getNick());
         playerRepository.save(player);

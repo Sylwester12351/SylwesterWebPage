@@ -18,6 +18,8 @@ public interface PlayerRepository extends CrudRepository<Player, Long> {
             nativeQuery = true)
     public Player find(@Param("nick") String nick);
 
+    Player findAllById(long longValue);
+
 
 //    @Modifying
 //    @Query(

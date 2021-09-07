@@ -29,7 +29,7 @@ public class HatterMainController {
         }
         model.addAttribute("player", new Player());
         model.addAttribute("Hatter", playerRepository.find(authentication.getName()));
-        Integer playerhp = playerRepository.find(authentication.getName()).getPlayerHp();
+        float playerhp = playerRepository.find(authentication.getName()).getPlayerHp();
         Integer exp = playerRepository.find(authentication.getName()).getPlayerExp();
         Integer lvl = playerRepository.find(authentication.getName()).getPlayerLvl();
         int lvls = lvl;

@@ -39,7 +39,7 @@ public class HatterBuyController {
         LocalTime nextUpdateTime = economyRepository.findById(1L).get().getPriceTimeToNextUpdate();
         System.out.println(nextUpdateTime);
         if (nextUpdateTime == null){
-            economy.setPriceTimeToNextUpdate(localTime.plusSeconds(60));
+            economy.setPriceTimeToNextUpdate(localTime.plusSeconds(20));
             economyRepository.save(economy);
         }else if (nextUpdateTime.isBefore(LocalTime.now())){
             int ampMin = 30;
@@ -199,8 +199,8 @@ public class HatterBuyController {
         Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
         int price = 20 * Armor;
         int minus = money - price;
-        int ArmorPlayer = playerRepository.find(authentication.getName()).getPlayerArmor();
-        int AddArmor = ArmorPlayer + Armor;
+        float ArmorPlayer = playerRepository.find(authentication.getName()).getPlayerArmor();
+        float AddArmor = ArmorPlayer + Armor;
 
         if (money < price){ // jeżeli nie można kupić
             return "FailedBuy";

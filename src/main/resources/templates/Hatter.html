@@ -6,58 +6,57 @@
     <meta charset="UTF-8">
     <title>Hatter </title>
 </head>
-<body>
-<div id="header">
-    <div id="time" style="color: red;" ></div>
-    <span>Hatter Wersja Alpha</span></span>
-</div>
+<body th:style="'background-image:url(' + @{/images-hatter/hatter_wall.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+<div id="container">
+    <div id="header">
+        <div id="time" style="color: red;" ></div>
+        <a th:href="@{/}">
+            <img width="30" height="30" th:src="@{/images/home.png}">
+        </a>
+        <span>Hatter Wersja Alpha</span></span>
+    </div>
 
-<div th:each="player : ${Hatter}" id="right"><h4><span th:text="${date}">DATE</span></h4>
-    <span>Level</span>
-    <span th:utext="${player.playerLvl}">0</span>
-    <br>
-    <span>Doświadczenie</span>
-    <span th:utext="${player.playerExp}">0</span>
-    <br>
-    <br>
-    <span>Statystyki główne</span>
-    <br>
-    <img width="30" height="30" th:src="@{/images-hatter/heart.gif}">
-    <progress max="100" th:value="${player.playerHp}">Live</progress>
-    <img width="30" height="30" th:src="@{/images-hatter/armor.png}">
-    <progress max="100" th:value="${player.playerArmor}">Armor</progress>
-    <br>
-    <img width="30" height="30" th:src="@{/images-hatter/money.png}">
-    <span th:utext="${player.playerMoney}"></span>
-    <br>
-    <img width="30" height="30" th:src="@{/images-hatter/bullet.png}">
-    <span th:utext="${player.playerBullet}">0</span>
-    <br>
-    <span>Przedmioty "ilość" :</span>
-    <br>
-    <br>
-    <span>Marihuana</span>
-    <span th:utext="${player.playerMarijuana}">0</span>
-    <br>
-    <span>Amfetamina</span>
-    <span th:utext="${player.playerAmphetamine}">0</span>
-    <br>
-    <span>Kokaina</span>
-    <span th:utext="${player.playerCocaine}">0</span>
+    <div th:each="player : ${Hatter}" ><h4><span th:text="${date}">DATE</span></h4>
+        <span>Level</span>
+        <span th:utext="${player.playerLvl}">0</span>
+        <br>
+        <span>Doświadczenie</span>
+        <span th:utext="${player.playerExp}">0</span>
+        <br>
+        <br>
+        <span>Statystyki główne</span>
+        <p>______________________</p>
+        <br>
+        <img width="80" height="80" th:src="@{/images-hatter/heart.gif}">
+        <progress max="100" th:value="${player.playerHp}">Live</progress>
+        <img width="80" height="80" th:src="@{/images-hatter/armor.png}">
+        <progress max="100" th:value="${player.playerArmor}">Armor</progress>
+        <br>
+        <img width="80" height="80" th:src="@{/images-hatter/money.png}">
+        <span th:utext="${player.playerMoney}"></span>
 
-</div>
+        <img width="80" height="80" th:src="@{/images-hatter/bullet.png}">
+        <span th:utext="${player.playerBullet}">0</span>
 
-<div id="left">
-    <dd class="hoverText"><a style="display:block" th:href="@{/}"><span>Powrót na stronę główną</span></a></dd>
-    <dl style="">
-        <dt>Aktywne bonusy i stany gracza</dt>
+        <img width="80" height="80" th:src="@{/images-hatter/head_aim.png}">
+        <span th:utext="${player.playerAimHead}">0</span>
 
-    </dl>
-</div>
-
-<div id="content">
-    <div class="myDiv">
-        <a style="color: grey;">Handel</a>
+        <img width="80" height="80" th:src="@{/images-hatter/body_aim.png}">
+        <span th:utext="${player.playerAimBody}">0</span>
+        <br>
+        <span>Przedmioty "ilość" :</span>
+        <br>
+        <br>
+        <span>Marihuana</span>
+        <span th:utext="${player.playerMarijuana}">0</span>
+        <br>
+        <span>Amfetamina</span>
+        <span th:utext="${player.playerAmphetamine}">0</span>
+        <br>
+        <span>Kokaina</span>
+        <span th:utext="${player.playerCocaine}">0</span>
+        <div class="myDiv">
+        <h3 style="color: grey;">Handel</h3>
         <br>
         <a class="hoverText" style="display:block" th:href="@{/BuyHatter}"><span>Kup</span></a></dd>
         <br>
@@ -65,19 +64,32 @@
         <br>
         <a class="hoverText" style="display:block"  th:href="@{/}"><span>Rynek</span></a></dd>
         <br>
-        <a style="color: grey;">Akcje na graczach</a>
+        <h3 style="color: grey;">Akcje na graczach</h3>
         <br>
         <a class="hoverText" style="display:block"  th:href="@{/AttackHatter}"><span>Zabójstwo</span></a></dd>
         <br>
         <a class="hoverText" style="display:block"  th:href="@{/}"><span>Wyśli szpiega</span></a></dd>
         <br>
-        <a style="color: grey;">Dodatkowe</a>
+        <h3 style="color: grey;">Dodatkowe</h3>
         <br>
         <a class="hoverText" style="display:block"  th:href="@{/}"><span>Napad</span></a></dd>
         <br>
     </div>
+
+    </div>
+
 </div>
 
+
+<!--<div id="left">-->
+
+<!--    <dl style="">-->
+<!--        <dt>Aktywne bonusy i stany gracza</dt>-->
+
+<!--    </dl>-->
+<!--</div>-->
+
+<div id="push"></div>
 <footer id="footer">
     <p>Ubuntu-Server</p>
 </footer>

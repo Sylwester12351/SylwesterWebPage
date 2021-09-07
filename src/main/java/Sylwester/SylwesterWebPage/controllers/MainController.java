@@ -1,10 +1,12 @@
 package Sylwester.SylwesterWebPage.controllers;
 
-import Sylwester.SylwesterWebPage.entity.Economy;
-import Sylwester.SylwesterWebPage.entity.HomeInfo;
-import Sylwester.SylwesterWebPage.repository.HomeInfoRepository;
+import Sylwester.SylwesterWebPage.entity.AdditionalText;
+import Sylwester.SylwesterWebPage.repository.AdditionalTextRepository;
 import Sylwester.SylwesterWebPage.weatherPage.GetTemp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,8 @@ public class MainController {
     private GetTemp getTemp = new GetTemp();
 
     @Autowired
-    private HomeInfoRepository homeInfoRepository;
+    private AdditionalTextRepository additionalTextRepository;
+
 
     @RequestMapping("/")
     public String mainPage(Model model, Authentication authentication){
@@ -28,8 +31,8 @@ public class MainController {
             model.addAttribute("userName","Nie jesteś zalogowany !");
         }
        model.addAttribute("date", LocalDate.now());
-        model.addAttribute("info", new HomeInfo());
-        model.addAttribute("message", homeInfoRepository.findAll());
+        model.addAttribute("info", new AdditionalText());
+        model.addAttribute("message", additionalTextRepository.findAll());
         return "Home";
     }
 

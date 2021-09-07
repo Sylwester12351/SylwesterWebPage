@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class HomeInfo {
+public class AdditionalText {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -16,8 +16,8 @@ public class HomeInfo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HomeInfo homeInfo = (HomeInfo) o;
-        return id == homeInfo.id && Objects.equals(homeMessage, homeInfo.homeMessage);
+        AdditionalText additionalText = (AdditionalText) o;
+        return id == additionalText.id && Objects.equals(homeMessage, additionalText.homeMessage);
     }
 
     @Override
