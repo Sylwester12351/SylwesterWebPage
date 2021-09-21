@@ -10,10 +10,37 @@
 <div id="container">
     <div id="header">
         <div id="time" style="color: red;" ></div>
-        <a th:href="@{/}">
-            <img width="30" height="30" th:src="@{/images/home.png}">
+        <a id="home" th:href="@{/}">
+            <img width="30" height="30" style="float:left;" th:src="@{/images/home.png}">
         </a>
-        <span>Hatter Wersja Alpha</span></span>
+        <a id="message" th:href="@{/Raport}">
+            <img width="30" height="30" style="float:left;" th:src="@{/images-hatter/message.png}">
+        </a>
+        <br>
+        <div class="dropdown">
+            <button class="dropbtn">Handel</button>
+            <div class="dropdown-content">
+                <a th:href="@{/BuyHatter}">Kup</a>
+                <a th:href="@{/SellHatter}">Sprzedaj</a>
+                <a th:href="@{/404}">Rynek</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Akcje na graczach</button>
+            <div class="dropdown-content">
+                <a th:href="@{/AttackHatter}">Zabójstwo</a>
+                <a th:href="@{/Spy}">Wyśli szpiega</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Hazard</button>
+            <div class="dropdown-content">
+                <a th:href="@{/Lotto}">Lotto</a>
+            </div>
+        </div>
+
+        <span style="float:right;">Hatter Wersja testowa</span></span>
     </div>
 
     <div th:each="player : ${Hatter}" ><h4><span th:text="${date}">DATE</span></h4>
@@ -21,7 +48,7 @@
         <span th:utext="${player.playerLvl}">0</span>
         <br>
         <span>Doświadczenie</span>
-        <span th:utext="${player.playerExp}">0</span>
+        <span th:utext="${player.playerPractice}">0</span>
         <br>
         <br>
         <span>Statystyki główne</span>
@@ -38,12 +65,19 @@
         <img width="80" height="80" th:src="@{/images-hatter/bullet.png}">
         <span th:utext="${player.playerBullet}">0</span>
 
+        <img width="80" height="80" th:src="@{/images-hatter/damage.png}">
+        <span th:utext="${player.playerDamage}">0</span>
+
         <img width="80" height="80" th:src="@{/images-hatter/head_aim.png}">
         <span th:utext="${player.playerAimHead}">0</span>
 
         <img width="80" height="80" th:src="@{/images-hatter/body_aim.png}">
         <span th:utext="${player.playerAimBody}">0</span>
         <br>
+        <h3 style="color:green; font-weight: bold;"> Ostatni atak na ciebie: </h3>
+        <h3 style="color:green; font-weight: bold;" th:utext="${player.playerLastAttacker}">0</h3>
+        <br>
+        <p>______________________</p>
         <span>Przedmioty "ilość" :</span>
         <br>
         <br>
@@ -55,25 +89,20 @@
         <br>
         <span>Kokaina</span>
         <span th:utext="${player.playerCocaine}">0</span>
-        <div class="myDiv">
-        <h3 style="color: grey;">Handel</h3>
-        <br>
-        <a class="hoverText" style="display:block" th:href="@{/BuyHatter}"><span>Kup</span></a></dd>
-        <br>
-        <a class="hoverText" style="display:block"  th:href="@{/SellHatter}"><span>Sprzedaj</span></a></dd>
-        <br>
-        <a class="hoverText" style="display:block"  th:href="@{/}"><span>Rynek</span></a></dd>
-        <br>
-        <h3 style="color: grey;">Akcje na graczach</h3>
-        <br>
-        <a class="hoverText" style="display:block"  th:href="@{/AttackHatter}"><span>Zabójstwo</span></a></dd>
-        <br>
-        <a class="hoverText" style="display:block"  th:href="@{/}"><span>Wyśli szpiega</span></a></dd>
-        <br>
-        <h3 style="color: grey;">Dodatkowe</h3>
-        <br>
-        <a class="hoverText" style="display:block"  th:href="@{/}"><span>Napad</span></a></dd>
-        <br>
+        <h3>Kup za doświadczenie</h3>
+        <div>
+            <form action="#" th:action="@{/error}" method="post">
+                <img width="40" height="40" th:src="@{/images-hatter/damage.png}"> <input min="1" type="number" step="1" name="dmg" />
+                <br>
+                <img width="40" height="40" th:src="@{/images-hatter/head_aim.png}"> <input min="1" type="number" step="1" name="aimHead" />
+                <br>
+                <img width="40" height="40" th:src="@{/images-hatter/body_aim.png}"> <input min="1" type="number" step="1" name="aimBody" />
+                <br>
+                <input type="submit" value="Wykonaj" />
+            </form>
+        </div>
+        <h3> Ceny </h3>
+
     </div>
 
     </div>
@@ -92,6 +121,14 @@
 <div id="push"></div>
 <footer id="footer">
     <p>Ubuntu-Server</p>
+    <li>
+        <a id="FB" href="https://www.facebook.com/sgfm1998/">
+            <img width="30" height="30" style="float:left;" th:src="@{/images/fbico.png}"></a>
+    </li>
+    <li>
+        <a id="GIT" href="https://github.com/Sylwester12351">
+            <img width="30" height="30" style="float:left;" th:src="@{/images/gitico.png}"></a>
+    </li>
 </footer>
 </body>
 </html>

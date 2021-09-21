@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" th:href="@{/css/styleHatter.css}"/>
+<head>
+    <meta charset="UTF-8">
+    <title>Raport</title>
+</head>
+<body th:style="'background-image:url(' + @{/images-hatter/hatter_wall.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+
+<div id="container"><span>Raport</span>
+
+    <div id="left">
+        <dl style="">
+            <dt>MENU</dt>
+            <dd class="hoverText"><a style="display:block" th:href="@{/Hatter}"><span>Powrót</span></a></dd>
+        </dl>
+    </div>
+    <div><span>Raport</span>
+        <table border="1">
+            <tr>
+                <th><span>Wiadomość</span></th>
+            </tr>
+            <tr th:each ="playerRaport : ${raport}">
+                <td style="color:white" th:utext="${playerRaport.playerRaports}">...</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+
+</div>
+</div>
+
+<div id="push"></div>
+<footer id="footer">
+    <p>Ubuntu-Server</p>
+    <li>
+        <a id="FB" href="https://www.facebook.com/sgfm1998/">
+            <img width="30" height="30" style="float:left;" th:src="@{/images/fbico.png}"></a>
+    </li>
+    <li>
+        <a id="GIT" href="https://github.com/Sylwester12351">
+            <img width="30" height="30" style="float:left;" th:src="@{/images/gitico.png}"></a>
+    </li>
+</footer>
+</body>
+<!--CLOCK code-->
+<script type="text/javascript">
+function getTime()
+{
+    return (new Date()).toLocaleTimeString();
+}
+document.getElementById('time').innerHTML = getTime();
+setInterval(function() {
+    document.getElementById('time').innerHTML = getTime();
+}, 1000);
+</script>
+</html>

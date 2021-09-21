@@ -2,7 +2,9 @@ package Sylwester.SylwesterWebPage.controllers.hatter;
 
 import Sylwester.SylwesterWebPage.entity.Economy;
 import Sylwester.SylwesterWebPage.entity.Player;
+import Sylwester.SylwesterWebPage.entity.PlayerRaport;
 import Sylwester.SylwesterWebPage.repository.EconomyRepository;
+import Sylwester.SylwesterWebPage.repository.PlayerRaportRepository;
 import Sylwester.SylwesterWebPage.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -19,17 +23,19 @@ public class HatterSellController {
 
     @Autowired
     private PlayerRepository playerRepository;
-
     @Autowired
     private EconomyRepository economyRepository;
+    @Autowired
+    private PlayerRaportRepository playerRaportRepository;
 
     Random random = new Random();
 
     @GetMapping("/SellHatter")
     public String sellHatter(Model model, Authentication authentication){
+        Player player = playerRepository.find(authentication.getName());
         LocalTime localTime = LocalTime.now();
-        Boolean playerIsAlive = playerRepository.find(authentication.getName()).getPlayerAlive();
-        LocalTime prisonTime = playerRepository.find(authentication.getName()).getPlayerTimeInPrison();
+        Boolean playerIsAlive = player.getPlayerAlive();
+        LocalTime prisonTime = player.getPlayerTimeInPrison();
         model.addAttribute("eco", new Economy());
         model.addAttribute("COST", economyRepository.findAll());
         if (prisonTime !=null) {
@@ -48,16 +54,20 @@ public class HatterSellController {
     @RequestMapping("/SellHatterAMF")
     public String sellHatterAMF(Model model, Authentication authentication, Integer Amphet) {
         Player player = playerRepository.find(authentication.getName());
+        PlayerRaport playerRaport = new PlayerRaport();
+        List<PlayerRaport> playerRaportList = new ArrayList<>();
         int cost = economyRepository.findById(1L).get().getPriceAmphetamine();
         player.getId();
-        Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
+        Integer money = player.getPlayerMoney();
         int rnd = random.nextInt(101);
         int time = random.nextInt(60);
         int price = cost * Amphet;
         int plus = money + price;
-        int exp = playerRepository.find(authentication.getName()).getPlayerExp();
+        int exp = player.getPlayerExp();
+        int practice = player.getPlayerPractice();
         int addExp = exp + Amphet * 30;
-        int AmphetPlayer = playerRepository.find(authentication.getName()).getPlayerAmphetamine();
+        int addPractice = practice + Amphet * 30;
+        int AmphetPlayer = player.getPlayerAmphetamine();
         int deleteAmphet = AmphetPlayer - Amphet;
         if (AmphetPlayer <= 0) {
             return "FailedBuy";
@@ -66,12 +76,21 @@ public class HatterSellController {
                 System.out.println(rnd);
                 LocalTime localTime = LocalTime.now();
                 player.setPlayerTimeInPrison(localTime.plusSeconds(time));
+                playerRaport.setPlayerMessage("Sprzedaż amfetaminy nie udany");
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "redirect:Prison";
             } else { // jeżeli się powiodło
                 player.setPlayerMoney(plus);
                 player.setPlayerExp(addExp);
+                player.setPlayerPractice(addPractice);
                 player.setPlayerAmphetamine(deleteAmphet);
+                playerRaport.setPlayerMessage("Sprzedaż amfetaminy udany " + Amphet + " Zarobiłeś " + price );
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "SuccesBuy";
             }
@@ -80,16 +99,20 @@ public class HatterSellController {
     @RequestMapping("/SellHatterTHC")
     public String sellHatterTHC(Model model, Authentication authentication, Integer THC){
         Player player = playerRepository.find(authentication.getName());
+        PlayerRaport playerRaport = new PlayerRaport();
+        List<PlayerRaport> playerRaportList = new ArrayList<>();
         int cost = economyRepository.findById(1L).get().getPriceMarijuana();
         player.getId();
-        Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
+        Integer money = player.getPlayerMoney();
         int rnd = random.nextInt(101);
         int time = random.nextInt(50);
         int price = cost * THC;
         int plus = money + price;
-        int exp = playerRepository.find(authentication.getName()).getPlayerExp();
+        int exp = player.getPlayerExp();
+        int practice = player.getPlayerPractice();
         int addExp = exp + THC * 20;
-        int THCplayer = playerRepository.find(authentication.getName()).getPlayerMarijuana();
+        int addPractice = practice + THC * 20;
+        int THCplayer = player.getPlayerMarijuana();
         int deleteTHC = THCplayer - THC;
         if (THCplayer <= 0) {
             return "FailedBuy";
@@ -98,12 +121,21 @@ public class HatterSellController {
                 System.out.println(rnd);
                 LocalTime localTime = LocalTime.now();
                 player.setPlayerTimeInPrison(localTime.plusSeconds(time));
+                playerRaport.setPlayerMessage("Sprzedaż zielska nie udany ");
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "redirect:Prison";
             } else { // jeżeli się powiodło
                 player.setPlayerMoney(plus);
                 player.setPlayerExp(addExp);
+                player.setPlayerPractice(addPractice);
                 player.setPlayerMarijuana(deleteTHC);
+                playerRaport.setPlayerMessage("Sprzedaż zielska udany " + THC + " Zarobiłeś " + price);
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "SuccesBuy";
             }
@@ -112,16 +144,20 @@ public class HatterSellController {
     @RequestMapping("/SellHatterCOC")
     public String sellHatterCOC(Model model, Authentication authentication, Integer COC){
         Player player = playerRepository.find(authentication.getName());
+        PlayerRaport playerRaport = new PlayerRaport();
+        List<PlayerRaport> playerRaportList = new ArrayList<>();
         int cost = economyRepository.findById(1L).get().getPriceCocaine();
         player.getId();
-        Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
+        Integer money = player.getPlayerMoney();
         int rnd = random.nextInt(101);
         int time = random.nextInt(90);
         int price = cost * COC;
         int plus = money + price;
-        int exp = playerRepository.find(authentication.getName()).getPlayerExp();
+        int exp = player.getPlayerExp();
+        int practice = player.getPlayerPractice();
         int addExp = exp + COC * 45;
-        int COCplayer = playerRepository.find(authentication.getName()).getPlayerCocaine();
+        int addPractice = practice + COC * 45;
+        int COCplayer = player.getPlayerCocaine();
         int deleteCOC = COCplayer - COC;
         if (COCplayer <= 0) {
             return "FailedBuy";
@@ -130,12 +166,21 @@ public class HatterSellController {
                 System.out.println(rnd);
                 LocalTime localTime = LocalTime.now();
                 player.setPlayerTimeInPrison(localTime.plusSeconds(time));
+                playerRaport.setPlayerMessage("Sprzedaż kokainy nie udany");
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "redirect:Prison";
             } else { // jeżeli się powiodło
                 player.setPlayerMoney(plus);
                 player.setPlayerExp(addExp);
+                player.setPlayerPractice(addPractice);
                 player.setPlayerCocaine(deleteCOC);
+                playerRaport.setPlayerMessage("Sprzedaż kokainy udany " + COC + " Zarobiłeś " + price );
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "SuccesBuy";
             }

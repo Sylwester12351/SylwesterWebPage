@@ -2,6 +2,7 @@ package Sylwester.SylwesterWebPage.entity;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +16,10 @@ public class Player {
 
 //    @OneToOne(mappedBy = "player")
 //    private User user;Time in prison
+
+    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name = "player_ID" ,nullable = false)
+    private List<PlayerRaport> playerRaports;
 
     @Column(name = "player_alive")
     private Boolean playerAlive = null;
@@ -37,6 +42,9 @@ public class Player {
     @Column(name = "player_hp")
     private float playerHp;
 
+    @Column(name = "player_damage")
+    private float playerDamage;
+
     @Column(name = "player_aimhead")
     private float playerAimHead;
 
@@ -58,6 +66,9 @@ public class Player {
     @Column(name = "player_exp")
     private int playerExp;
 
+    @Column(name = "player_practice")
+    private int playerPractice;
+
     @Column(name = "player_marijuana")
     private int playerMarijuana;
 
@@ -69,6 +80,22 @@ public class Player {
 
     @Column(name = "player_testmode")
     private boolean playerTestMode;
+
+    public List<PlayerRaport> getPlayerRaports() {
+        return playerRaports;
+    }
+
+    public void setPlayerRaports(List<PlayerRaport> playerRaports) {
+        this.playerRaports = playerRaports;
+    }
+
+    public float getPlayerDamage() {
+        return playerDamage;
+    }
+
+    public void setPlayerDamage(float playerDamage) {
+        this.playerDamage = playerDamage;
+    }
 
     public boolean isPlayerTestMode() {
         return playerTestMode;
@@ -222,16 +249,52 @@ public class Player {
         this.playerAimBody = playerAimBody;
     }
 
+    public int getPlayerPractice() {
+        return playerPractice;
+    }
+
+    public void setPlayerPractice(int playerPractice) {
+        this.playerPractice = playerPractice;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return playerHp == player.playerHp && playerArmor == player.playerArmor && playerMoney == player.playerMoney && playerBullet == player.playerBullet && playerLvl == player.playerLvl && playerExp == player.playerExp && playerMarijuana == player.playerMarijuana && playerAmphetamine == player.playerAmphetamine && playerCocaine == player.playerCocaine && id.equals(player.id) && playerAlive.equals(player.playerAlive) && playerNick.equals(player.playerNick);
+        return Float.compare(player.playerHp, playerHp) == 0 && Float.compare(player.playerDamage, playerDamage) == 0 && Float.compare(player.playerAimHead, playerAimHead) == 0 && Float.compare(player.playerAimBody, playerAimBody) == 0 && Float.compare(player.playerArmor, playerArmor) == 0 && playerMoney == player.playerMoney && playerBullet == player.playerBullet && playerLvl == player.playerLvl && playerExp == player.playerExp && playerPractice == player.playerPractice && playerMarijuana == player.playerMarijuana && playerAmphetamine == player.playerAmphetamine && playerCocaine == player.playerCocaine && playerTestMode == player.playerTestMode && id.equals(player.id) && playerRaports.equals(player.playerRaports) && playerAlive.equals(player.playerAlive) && playerTimeInPrison.equals(player.playerTimeInPrison) && playerInPrison.equals(player.playerInPrison) && playerNick.equals(player.playerNick) && playerLastAttacker.equals(player.playerLastAttacker) && playerKiller.equals(player.playerKiller);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, playerAlive, playerNick, playerHp, playerArmor, playerMoney, playerBullet, playerLvl, playerExp, playerMarijuana, playerAmphetamine, playerCocaine);
+        return Objects.hash(id, playerRaports, playerAlive, playerTimeInPrison, playerInPrison, playerNick, playerLastAttacker, playerKiller, playerHp, playerDamage, playerAimHead, playerAimBody, playerArmor, playerMoney, playerBullet, playerLvl, playerExp, playerPractice, playerMarijuana, playerAmphetamine, playerCocaine, playerTestMode);
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", playerRaports=" + playerRaports +
+                ", playerAlive=" + playerAlive +
+                ", playerTimeInPrison=" + playerTimeInPrison +
+                ", playerInPrison=" + playerInPrison +
+                ", playerNick='" + playerNick + '\'' +
+                ", playerLastAttacker='" + playerLastAttacker + '\'' +
+                ", playerKiller='" + playerKiller + '\'' +
+                ", playerHp=" + playerHp +
+                ", playerDamage=" + playerDamage +
+                ", playerAimHead=" + playerAimHead +
+                ", playerAimBody=" + playerAimBody +
+                ", playerArmor=" + playerArmor +
+                ", playerMoney=" + playerMoney +
+                ", playerBullet=" + playerBullet +
+                ", playerLvl=" + playerLvl +
+                ", playerExp=" + playerExp +
+                ", playerPractice=" + playerPractice +
+                ", playerMarijuana=" + playerMarijuana +
+                ", playerAmphetamine=" + playerAmphetamine +
+                ", playerCocaine=" + playerCocaine +
+                ", playerTestMode=" + playerTestMode +
+                '}';
     }
 }

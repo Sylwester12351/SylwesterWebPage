@@ -10,5 +10,10 @@
 <a th:href="@{/}">
     <img width="30" height="30" th:src="@{/images/home.png}">
 </a>
+<div th:each="player : ${Hatter}">
+    <br>
+    <h3>Zabił cię: </h3>
+    <span th:utext="${player.playerKiller}">----</span>
+</div>
 </body>
 </html>

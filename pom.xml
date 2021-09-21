@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>Sylwester</groupId>
 	<artifactId>SylwesterWebPage</artifactId>
-	<version>1.0.7.4</version>
+	<version>1.0.7.5</version>
 	<name>SylwesterWebPage</name>
 	<description>SylwesterWebPage</description>
 
@@ -27,7 +27,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->

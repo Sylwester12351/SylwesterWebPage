@@ -1,6 +1,8 @@
 package Sylwester.SylwesterWebPage.controllers.hatter;
 
 import Sylwester.SylwesterWebPage.entity.Player;
+import Sylwester.SylwesterWebPage.entity.PlayerRaport;
+import Sylwester.SylwesterWebPage.repository.PlayerRaportRepository;
 import Sylwester.SylwesterWebPage.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -9,11 +11,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ *
+ * todo dodać płatność dośwadczeniem za podbicie statystyk celowania i DMG
+ */
 @Controller
 public class HatterMainController {
+
     @Autowired
     private PlayerRepository playerRepository;
+
+    @Autowired
+    private PlayerRaportRepository playerRaportRepository;
     /*
     Main page
      */
@@ -21,7 +33,7 @@ public class HatterMainController {
     public String hatterPage(Model model, Authentication authentication){
         Player player = playerRepository.find(authentication.getName());
         player.getId();
-        LocalTime prisonTime = playerRepository.find(authentication.getName()).getPlayerTimeInPrison();
+        LocalTime prisonTime = player.getPlayerTimeInPrison();
         if (prisonTime !=null) {
             if (prisonTime.isAfter(LocalTime.now())){
                 return "redirect:Prison";
@@ -29,9 +41,9 @@ public class HatterMainController {
         }
         model.addAttribute("player", new Player());
         model.addAttribute("Hatter", playerRepository.find(authentication.getName()));
-        float playerhp = playerRepository.find(authentication.getName()).getPlayerHp();
-        Integer exp = playerRepository.find(authentication.getName()).getPlayerExp();
-        Integer lvl = playerRepository.find(authentication.getName()).getPlayerLvl();
+        float playerhp = player.getPlayerHp();
+        Integer exp = player.getPlayerExp();
+        Integer lvl = player.getPlayerLvl();
         int lvls = lvl;
         for (int i = exp; i > 100; i = i - 100) {
              lvls++;
@@ -46,7 +58,7 @@ public class HatterMainController {
             player.setPlayerAlive(false);
             playerRepository.save(player);
         }
-        Boolean playerIsAlive = playerRepository.find(authentication.getName()).getPlayerAlive();
+        Boolean playerIsAlive = player.getPlayerAlive();
         System.out.println(playerIsAlive.booleanValue());
         if (playerIsAlive){
             return "Hatter";
@@ -55,10 +67,40 @@ public class HatterMainController {
         }
     }
 
+    @GetMapping("/DeadHatter")
+    public String playerIsDead(Model model, Authentication authentication){
+        model.addAttribute("player", new Player());
+        model.addAttribute("Hatter", playerRepository.find(authentication.getName()));
+        return "DeadHatter";
+    }
+
     @GetMapping("/Prison")
     public String prison(Model model, Authentication authentication){
         model.addAttribute("player", new Player());
         model.addAttribute("Prison", playerRepository.find(authentication.getName()));
         return "Prison";
+    }
+    @GetMapping("/Raport")
+    public String raport(Model model, Authentication authentication){
+        model.addAttribute("playerRaport", new Player());
+        model.addAttribute("raport", playerRepository.find(authentication.getName()));
+        return "RaportHatter";
+    }
+
+    /**
+     * todo dodac gre lotto
+     * todo dodac szpiega
+     */
+    @GetMapping("/Lotto")
+    public String lotto(Model model, Authentication authentication){
+//        model.addAttribute("playerRaport", new Player());
+//        model.addAttribute("raport", playerRepository.find(authentication.getName()));
+        return "LottoHatter";
+    }
+    @GetMapping("/Spy")
+    public String spy(Model model, Authentication authentication){
+//        model.addAttribute("playerRaport", new Player());
+//        model.addAttribute("raport", playerRepository.find(authentication.getName()));
+        return "SpyHatter";
     }
 }

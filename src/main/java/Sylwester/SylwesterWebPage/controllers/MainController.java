@@ -79,6 +79,10 @@ public class MainController {
     public String errorPage(Model model){
         return "error";
     }
+    @GetMapping("/404")
+    public String pageNotFound(Model model){
+        return "404err";
+    }
 
     @GetMapping("/LogoutSucces")
     public String logout(Model model){

@@ -2,7 +2,9 @@ package Sylwester.SylwesterWebPage.controllers.hatter;
 
 import Sylwester.SylwesterWebPage.entity.Economy;
 import Sylwester.SylwesterWebPage.entity.Player;
+import Sylwester.SylwesterWebPage.entity.PlayerRaport;
 import Sylwester.SylwesterWebPage.repository.EconomyRepository;
+import Sylwester.SylwesterWebPage.repository.PlayerRaportRepository;
 import Sylwester.SylwesterWebPage.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -22,9 +26,10 @@ public class HatterBuyController {
 
     @Autowired
     private PlayerRepository playerRepository;
-
     @Autowired
     private EconomyRepository economyRepository;
+    @Autowired
+    private PlayerRaportRepository playerRaportRepository;
 
     Random random = new Random();
 
@@ -79,16 +84,20 @@ public class HatterBuyController {
     @RequestMapping("/BuyHatterAMF")
     public String buyHatterAmfet(Model model, Authentication authentication, Integer Amphet){
         Player player = playerRepository.find(authentication.getName());
+        PlayerRaport playerRaport = new PlayerRaport();
+        List<PlayerRaport> playerRaportList = new ArrayList<>();
         int cost = economyRepository.findById(1L).get().getPriceAmphetamine();
         player.getId();
-        Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
+        Integer money = player.getPlayerMoney();
         int rnd = random.nextInt(101);
         int time = random.nextInt(60);
         int price = cost * Amphet;
         int minus = money - price;
-        int exp = playerRepository.find(authentication.getName()).getPlayerExp();
+        int exp = player.getPlayerExp();
         int addExp = exp + Amphet * 30;
-        int AmphetPlayer = playerRepository.find(authentication.getName()).getPlayerAmphetamine();
+        int practice = player.getPlayerPractice();
+        int addPractice = practice + Amphet * 30;
+        int AmphetPlayer = player.getPlayerAmphetamine();
         int addAmphet = AmphetPlayer + Amphet;
         if (money < price){ // jeżeli nie można kupić
             return "FailedBuy";
@@ -97,12 +106,21 @@ public class HatterBuyController {
                 System.out.println(rnd);
                 LocalTime localTime = LocalTime.now();
                 player.setPlayerTimeInPrison(localTime.plusSeconds(time));
+                playerRaport.setPlayerMessage("Zakup amfetaminy nie udany");
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "redirect:Prison";
             }else { // jeżeli się powiodło
                 player.setPlayerMoney(minus);
                 player.setPlayerExp(addExp);
+                player.setPlayerPractice(addPractice);
                 player.setPlayerAmphetamine(addAmphet);
+                playerRaport.setPlayerMessage("Zakup amfetaminy udany kupiłeś " + Amphet);
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "SuccesBuy";
             }
@@ -111,16 +129,20 @@ public class HatterBuyController {
     @RequestMapping("/BuyHatterTHC")
     public String buyHatterTHC(Model model, Authentication authentication, Integer THC){
         Player player = playerRepository.find(authentication.getName());
+        PlayerRaport playerRaport = new PlayerRaport();
+        List<PlayerRaport> playerRaportList = new ArrayList<>();
         player.getId();
         int cost = economyRepository.findById(1L).get().getPriceMarijuana();
-        Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
+        Integer money = player.getPlayerMoney();
         int rnd = random.nextInt(101);
         int time = random.nextInt(50);
         int price = cost * THC;
         int minus = money - price;
-        int exp = playerRepository.find(authentication.getName()).getPlayerExp();
+        int exp = player.getPlayerExp();
+        int practice = player.getPlayerPractice();
         int addExp = exp + THC * 20;
-        int THCPlayer = playerRepository.find(authentication.getName()).getPlayerMarijuana();
+        int addPractice = practice + THC * 20;
+        int THCPlayer = player.getPlayerMarijuana();
         int addTHC = THCPlayer + THC;
         if (money < price){ // jeżeli nie można kupić
             return "FailedBuy";
@@ -129,13 +151,22 @@ public class HatterBuyController {
                 System.out.println(rnd);
                 LocalTime localTime = LocalTime.now();
                 player.setPlayerTimeInPrison(localTime.plusSeconds(time));
+                playerRaport.setPlayerMessage("Zakup zielska nie udany");
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "redirect:Prison";
             }else { // jeżeli się powiodło
                 System.out.println(rnd);
                 player.setPlayerMoney(minus);
                 player.setPlayerExp(addExp);
+                player.setPlayerPractice(addPractice);
                 player.setPlayerMarijuana(addTHC);
+                playerRaport.setPlayerMessage("Zakup zielska udany kupiłeś " + THC);
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "SuccesBuy";
             }
@@ -144,16 +175,20 @@ public class HatterBuyController {
     @RequestMapping("/BuyHatterCOC")
     public String buyHatterCOC(Model model, Authentication authentication, Integer COC){
         Player player = playerRepository.find(authentication.getName());
+        PlayerRaport playerRaport = new PlayerRaport();
+        List<PlayerRaport> playerRaportList = new ArrayList<>();
         player.getId();
-        Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
+        Integer money = player.getPlayerMoney();
         int cost = economyRepository.findById(1L).get().getPriceCocaine();
         int rnd = random.nextInt(101);
         int time = random.nextInt(90);
         int price = cost * COC;
         int minus = money - price;
-        int exp = playerRepository.find(authentication.getName()).getPlayerExp();
+        int exp = player.getPlayerExp();
+        int practice = player.getPlayerPractice();
         int addExp = exp + COC * 45;
-        int COCPlayer = playerRepository.find(authentication.getName()).getPlayerCocaine();
+        int addPractice = practice + COC * 45;
+        int COCPlayer = player.getPlayerCocaine();
         int addCOC = COCPlayer + COC;
         if (money < price){ // jeżeli nie można kupić
             return "FailedBuy";
@@ -162,12 +197,21 @@ public class HatterBuyController {
                 System.out.println(rnd);
                 LocalTime localTime = LocalTime.now();
                 player.setPlayerTimeInPrison(localTime.plusSeconds(time));
+                playerRaport.setPlayerMessage("Zakup kokainy nie udany");
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "redirect:Prison";
             }else { // jeżeli się powiodło
                 player.setPlayerMoney(minus);
                 player.setPlayerExp(addExp);
+                player.setPlayerPractice(addPractice);
                 player.setPlayerCocaine(addCOC);
+                playerRaport.setPlayerMessage("Zakup kokainy udany kupiłeś " + COC);
+                playerRaportList.add(playerRaport);
+                player.setPlayerRaports(playerRaportList);
+                playerRaportRepository.save(playerRaport);
                 playerRepository.save(player);
                 return "SuccesBuy";
             }
@@ -177,11 +221,11 @@ public class HatterBuyController {
     public String buyHatterBullet(Model model, Authentication authentication, Integer Bullet){
         Player player = playerRepository.find(authentication.getName());
         player.getId();
-        Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
+        Integer money = player.getPlayerMoney();
         int cost = economyRepository.findById(1L).get().getPriceBullet();
         int price = cost * Bullet;
         int minus = money - price;
-        int BulletPlayer = playerRepository.find(authentication.getName()).getPlayerBullet();
+        int BulletPlayer = player.getPlayerBullet();
         int addBullet = BulletPlayer + Bullet;
         if (money < price){ // jeżeli nie można kupić
             return "FailedBuy";
@@ -196,10 +240,10 @@ public class HatterBuyController {
     public String buyHatterArmor(Model model, Authentication authentication, Integer Armor){
         Player player = playerRepository.find(authentication.getName());
         player.getId();
-        Integer money = playerRepository.find(authentication.getName()).getPlayerMoney();
+        Integer money = player.getPlayerMoney();
         int price = 20 * Armor;
         int minus = money - price;
-        float ArmorPlayer = playerRepository.find(authentication.getName()).getPlayerArmor();
+        float ArmorPlayer = player.getPlayerArmor();
         float AddArmor = ArmorPlayer + Armor;
 
         if (money < price){ // jeżeli nie można kupić

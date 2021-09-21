@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Zakup udany</title>
 </head>
-<body>
-<center><h1>Udało ci się kupić</h1></center>
+<body th:style="'background-image:url(' + @{/images-hatter/hatter_wall.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+<center><h1 style="color:white">Udało ci się kupić</h1></center>
 <div id="left">
     <dl style="">
         <dt>MENU</dt>
-        <dd class="hoverText"><a style="display:block" th:href="@{/Hatter}"><span>Powrót</span></a></dd>
+        <dd class="hoverText"><a style="color:white" th:href="@{/Hatter}"><span>Powrót</span></a></dd>
     </dl>
 </div>
 </body>

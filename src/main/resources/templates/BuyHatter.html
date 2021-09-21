@@ -1,69 +1,85 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<link rel="stylesheet" th:href="@{/css/shopHatter.css}"/>
+<link rel="stylesheet" th:href="@{/css/styleHatter.css}"/>
 <head>
     <meta charset="UTF-8">
     <title>Buy</title>
 </head>
-<body>
-<div id="header"><span>Sklep</span></div>
-<div id="left">
-    <dl style="">
-        <dt>MENU</dt>
-        <dd class="hoverText"><a style="display:block" th:href="@{/Hatter}"><span>Powrót</span></a></dd>
-    </dl>
-</div>
-<div id="content"><span>Przy nie udanej próbie zakupu trafiasz do więzienia na określony czas w tym czasie nie jesteś w stanie wykonać żadnej akcji</span>
-    <dl style="">
-        <dt><span>sklep</span></dt>
-        <dd><form action="#" th:action="@{/BuyHatterAMF}" method="post">
-            Amfetamina : <input min="1" type="number" step="1" name="Amphet" />
-            <input type="submit" value="Wykonaj" />
+<body th:style="'background-image:url(' + @{/images-hatter/hatter_wall.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+
+<div id="container">
+    <div id="header"><span>Sklep</span></div>
+    <div id="left">
+        <dl style="">
+            <dt>MENU</dt>
+            <dd class="hoverText"><a style="display:block" th:href="@{/Hatter}"><span>Powrót</span></a></dd>
+        </dl>
+    </div>
+    <div id="content"><span>Przy nie udanej próbie zakupu trafiasz do więzienia na określony czas w tym czasie nie jesteś w stanie wykonać żadnej akcji</span>
+        <dl style="">
+            <dt><span>sklep</span></dt>
+            <dd><form style="color:white" action="#" th:action="@{/BuyHatterAMF}" method="post">
+                Amfetamina : <input min="1" type="number" step="1" name="Amphet" />
+                <input type="submit" value="Wykonaj" />
+                <br>
+            </form></dd>
+            <dd><form style="color:white" action="#" th:action="@{/BuyHatterTHC}" method="post">
+                Marihuana : <input min="1" type="number" step="1" name="THC" />
+                <input type="submit" value="Wykonaj" />
+                <br>
+            </form></dd>
+            <dd><form style="color:white" action="#" th:action="@{/BuyHatterCOC}" method="post">
+                Kokaina : <input min="1" type="number" step="1" name="COC" />
+                <input type="submit" value="Wykonaj" />
+                <br>
+            </form></dd>
+            <dd><form style="color:white" action="#" th:action="@{/BuyHatterARMR}" method="post">
+                Pancerz : <input min="50" max="100" type="number" step="50" name="Armor" />
+                <input type="submit" value="Wykonaj" />
+                <br>
+            </form></dd>
+            <dd><form style="color:white" action="#" th:action="@{/BuyHatterBULET}" method="post">
+                Amunicja : <input min="1" type="number" step="1" name="Bullet" />
+                <input type="submit" value="Wykonaj" />
+                <br>
+            </form></dd>
+        </dl>
+    </div>
+    <div id="right"><h4></h4>
+        <div id="time" style="color: red;" ></div>
+        <div th:each="eco : ${COST}"><h4>Ceny</h4>
+            <span>Amfetamina</span>
+            <span th:utext="${eco.priceAmphetamine}">0</span>
             <br>
-        </form></dd>
-        <dd><form action="#" th:action="@{/BuyHatterTHC}" method="post">
-            Marihuana : <input min="1" type="number" step="1" name="THC" />
-            <input type="submit" value="Wykonaj" />
+            <span>THC</span>
+            <span th:utext="${eco.priceMarijuana}">0</span>
             <br>
-        </form></dd>
-        <dd><form action="#" th:action="@{/BuyHatterCOC}" method="post">
-            Kokaina : <input min="1" type="number" step="1" name="COC" />
-            <input type="submit" value="Wykonaj" />
+            <span>Kokaina</span>
+            <span th:utext="${eco.priceCocaine}">0</span>
             <br>
-        </form></dd>
-        <dd><form action="#" th:action="@{/BuyHatterARMR}" method="post">
-            Pancerz : <input min="50" max="100" type="number" step="50" name="Armor" />
-            <input type="submit" value="Wykonaj" />
+            <span>Amunicja</span>
+            <span th:utext="${eco.priceBullet}">0</span>
             <br>
-        </form></dd>
-        <dd><form action="#" th:action="@{/BuyHatterBULET}" method="post">
-            Amunicja : <input min="1" type="number" step="1" name="Bullet" />
-            <input type="submit" value="Wykonaj" />
+            <span>Pancerz cena za 50%</span>
+            <span>1000</span>
             <br>
-        </form></dd>
-    </dl>
-</div>
-<div id="right"><h4></h4>
-    <div id="time" style="color: red;" ></div>
-    <div th:each="eco : ${COST}"><h4>Ceny</h4>
-        <span>Amfetamina</span>
-        <span th:utext="${eco.priceAmphetamine}">0</span>
-        <br>
-        <span>THC</span>
-        <span th:utext="${eco.priceMarijuana}">0</span>
-        <br>
-        <span>Kokaina</span>
-        <span th:utext="${eco.priceCocaine}">0</span>
-        <br>
-        <span>Amunicja</span>
-        <span th:utext="${eco.priceBullet}">0</span>
-        <br>
-        <span>Pancerz cena za 50%</span>
-        <span>1000</span>
-        <br>
+        </div>
     </div>
 </div>
-<div id="footer"><span>Strona postawiona na własnym serwerze RPI 3b+ </span></div>
+
+
+<div id="push"></div>
+<footer id="footer">
+    <p>Ubuntu-Server</p>
+    <li>
+        <a id="FB" href="https://www.facebook.com/sgfm1998/">
+            <img width="30" height="30" style="float:left;" th:src="@{/images/fbico.png}"></a>
+    </li>
+    <li>
+        <a id="GIT" href="https://github.com/Sylwester12351">
+            <img width="30" height="30" style="float:left;" th:src="@{/images/gitico.png}"></a>
+    </li>
+</footer>
 </body>
 <!--CLOCK code-->
 <script type="text/javascript">

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" th:href="@{/css/styleHatter.css}"/>
+<head>
+  <meta charset="UTF-8">
+  <title>Szpieg</title>
+</head>
+<body th:style="'background-image:url(' + @{/images-hatter/hatter_wall.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+<div id="container">
+  <div id="content"><span>Wybierz gracza do zaatakowania</span>
+    <table border="1">
+      <tr>
+        <th><span>ID</span></th>
+        <th><span>LVL</span></th>
+        <th><span>NICK</span></th>
+        <th><span>Czy żyje ?</span></th>
+      </tr>
+      <tr style="color:white">
+        <td>...</td>
+      </tr>
+    </table>
+    <br>
+  </div>
+  <div>
+    <form style="color:white" action="#" th:action="@{/null}" method="post">
+      aaaa : <input min="1" type="number" step="1" name="Bullet" />
+      <br>
+      adadad : <input min="1" type="number" step="1" name="idPlayer" />
+      <br>
+      <input type="submit" value="Wykonaj" />
+    </form>
+  </div>
+
+  <a th:href="@{/Hatter}">
+    <img width="70" height="70" th:src="@{/images/home.png}">
+  </a>
+</div>
+<div id="push"></div>
+<footer id="footer">
+  <p>Ubuntu-Server</p>
+  <li>
+    <a id="FB" href="https://www.facebook.com/sgfm1998/">
+      <img width="30" height="30" style="float:left;" th:src="@{/images/fbico.png}"></a>
+  </li>
+  <li>
+    <a id="GIT" href="https://github.com/Sylwester12351">
+      <img width="30" height="30" style="float:left;" th:src="@{/images/gitico.png}"></a>
+  </li>
+</footer>
+
+</body>
+<!--CLOCK code-->
+<script type="text/javascript">
+function getTime()
+{
+    return (new Date()).toLocaleTimeString();
+}
+document.getElementById('time').innerHTML = getTime();
+setInterval(function() {
+    document.getElementById('time').innerHTML = getTime();
+}, 1000);
+</script>
+</html>
