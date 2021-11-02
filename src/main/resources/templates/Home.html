@@ -7,7 +7,7 @@
     <link rel="shortcut icon" type="image/ico" th:href="@{/favicon.ico}"/>
 <!--    ^^^^ Icon-->
 </head>
-<body th:style="'background-image:url(' + @{/images/wallpap.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+<body th:style="'background-image:url(' + @{/images/wallpap.jpeg} + '); background-repeat: no-repeat, repeat; background-size: 150%;'">
 <div id="container">
     <div id="header">
         <span id="headerTextRight" th:text="${userName}"></span>
@@ -29,7 +29,7 @@
                     <button class="dropbtn">Aplikacje strony</button>
                     <div class="dropdown-content">
                         <a th:href="@{/Hatter}">Gra Hatter</a>
-                        <a th:href="@{/blogs}">"Blog"</a>
+<!--                        <a th:href="@{/404}">""</a> &lt;!&ndash; Jakieś forum tu będzie &ndash;&gt;-->
                         <a th:href="@{/WeatherAppOnline}">Pogoda</a>
                         <a th:href="@{/Calc}">Kalkulator</a>
                         <a th:href="@{/PassGen}">Generator haseł</a>
@@ -60,23 +60,42 @@
     </div>
 
     <div style="padding: 20px">
+        <img width="130" height="130" th:src="@{/images/helloico.png}">
+        <br>
     <span style="font-weight: bold;">Witam na mojej stronie ! Pokrótce chciałbym opisać czym się zajmowałem.
-        Ukończyłem technikum elektryczne o profilu technik informatyk ponieważ praca z komputerami zawsze była moją pasją.
-        Pierwszym ciekawym samodzielnym projektem było napisanie gry multi-player o podobnych zasadach rozgrywki do Counter-Strike
-        ale także posiadała mechanizm opadania pocisku nie był to najzwyklejszy raycasting, grę tworzyłem na silniku Unity 5 kod pisałem w języku C#.
-        Obecnie zajmuję się językiem Java w którym pisałem projekty takie jak generator haseł, pobieranie wyświetlanie pogody i tworzenie wykresu na podstawie tych informacji,
-        konwersja na język mors-a, wysyłanie wiadomości mail i obecną stronę używając framework-a Spring strona działa także na moim własnym prywatnym serwerze.
-        W dalszym ciągu chcę rozwijać swoje pasje oraz poszerzać horyzonty. Zapraszam do obejrzenia mikro-serwisów znajdujących w menu !
-        Wszystkie projekty java jak i kod źródłowy tej strony znajduje się na moim profilu GitHub.</span><br>
+Ukończyłem technikum elektryczne o profilu technik informatyk, ponieważ praca z komputerami zawsze była moją pasją.
+Pierwszym ciekawym samodzielnym projektem było napisanie gry multiplayer o podobnych zasadach rozgrywki do Counter-Strike
+ale także posiadała mechanizm opadania pocisku nie był to najzwyklejszy raycasting, grę tworzyłem na silniku Unity 5 kod pisałem w języku C#.
+Obecnie zajmuję się językiem Java w którym pisałem projekty takie jak generator haseł, pobieranie wyświetlanie pogody i tworzenie wykresu na podstawie tych informacji,
+konwersja na język mors-a, wysyłanie wiadomości mail i obecną stronę używając framework-a Spring strona działa także na moim własnym prywatnym serwerze.
+W dalszym ciągu chcę rozwijać swoje pasje oraz poszerzać horyzonty. Zapraszam do obejrzenia mikro-serwisów znajdujących w menu !
+Wszystkie projekty java, jak i kod źródłowy tej strony znajduje się na moim profilu GitHub.</span><br>
     <br>
-    <span style="font-weight: bold;">Zarejestrowani użytkownicy uzyskują dostęp do dodatkowych opcji. Gra "Hatter" gra luźno inspirowana grą przeglądarkową "Omerta" gra aktualnie nazywa się
-    chyba jednak inaczej :D A więc w grze chodzi aby przetrwać i wyeliminować innych graczy aby to zrobić należy kupować amunicje i atakować graczy aby mieć pieniądze
-    możemy handlować narkotykami i napadać ale uwaga każdy wyższy LVL zwiększa nasze prawdopodobieństwo na sukces akcji a więc na przykład gracz z pierwszym poziomem
-    napadając ma ogromne szanse na trafienie do więzienia co odbiera na jakiś czas możliwość wykonywania akcji. Co do atakowania graczy atak jest dostępny od 10 poziomu
-    to czy uda nam się zabić przeciwnika zależy ile na to wyłożymy amunicji i czy gracz posiada pancerz jeżeli to jednak nas zaatakują i taki atak przerzyjemy możemy kupić lekarstwo
-    i uleczyć nie co pasek zdrowia a więc życzę powodzenia miłej zabawy ! - Przedstawiony opis prezentuje początkowe założenia gry które mogą ulec zmianie chociaż główne założenia się
-    raczej nie zmienią może dojść więcej opcji zarobku i takie tam.</span>
+    <span style="font-weight: bold;">Zarejestrowani użytkownicy uzyskują dostęp do dodatkowych opcji. Gra "Hatter" luźno inspirowana inną grą przeglądarkową "Omerta" aktualnie nazywa się
+chyba jednak inaczej :D A więc w grze chodzi, aby przetrwać i wyeliminować innych graczy, aby to zrobić należy kupować amunicje i atakować graczy, aby mieć pieniądze
+możemy handlować narkotykami i napadać, ale uwaga każdy wyższy LVL zwiększa nasze prawdopodobieństwo na sukces akcji, a więc na przykład gracz z pierwszym poziomem
+napadając ma ogromne szanse na trafienie do więzienia co odbiera na jakiś czas możliwość wykonywania akcji. Co do atakowania graczy atak jest dostępny od 10 poziomu
+to czy uda nam się zabić przeciwnika zależy ile na to wyłożymy amunicji i czy gracz posiada pancerz, jeżeli to jednak nas zaatakują i taki atak przeżyjemy możemy kupić lekarstwo
+i uleczyć nie co pasek zdrowia a więc życzę powodzenia miłej zabawy ! - Przedstawiony opis prezentuje początkowe założenia gry które mogą ulec zmianie chociaż główne założenia się
+raczej nie zmienią może dojść więcej opcji zarobku i takie tam.</span>
+        <br>
+        <div style="padding: 20px">
+            <span style="font-weight: bold;">
+            S.W.P Messenger program desktopowy umożliwiający wymianę wiadomości za pośrednictwem tej strony, aby móc korzystać z tego programu należy się tu zarejestrować i pobrać program.
+        </span>
+            <p>Program jeszcze nie dodany !</p>
+        </div>
 </div>
+    <div style="padding: 50px">
+        <img width="100" height="100" th:src="@{/images/warningSite.png}">
+        <br>
+        <h3>
+            Ważne rejestrując się na stronie wyrażasz zgodę na pliki cookie, zapis numeru ip, korzystając z programu S.W.P Messenger wyrażasz zgodę
+            na zapis podstawowych informacji o twojej maszynie takie jak model procesora czy też nazwa płyty głównej, informacje potrzebne, aby zweryfikować
+            urządzenie.
+            Jeżeli nie wyrażasz zgody na powyższe warunki nie korzystaj nie rejestruj się ani nie pobieraj oprogramowania tej strony ! Wszystkie dane konta zostają wykasowane przy aktualizacji strony, w późniejszym czasie ta sytuacja ulegnie zmianie !
+        </h3>
+    </div>
 <!--ADMIN INFO    -->
     <div style="padding: 50px">
         <h3>Wszystkie dodatkowe informacje i zmiany jakie są wprowadzane na mojej stronie czy też planowana aktualizacja zostaną wyświetlone poniżej</h3>
@@ -85,18 +104,42 @@
         <div th:each="info : ${message}">
             <span th:utext="${info.homeMessage}">blablabla</span>
         </div>
-
     </div>
+    <!-- NEWS-->
+    <div>
+        <img width="100" height="100" th:src="@{/images/news.png}">
+        <h3>Wiadomości z Polski</h3>
+        <p>Ta część nadal w rozwoju</p>
+        <br>
+        <div>
+        <tr style="padding: 20px">
+            <h3 th:text="${name}"> </h3>
+            <!-- Sekcja wiadomości do poprawienia -->
+<!--            <td th:text="${author}" style="color: blue">-->
+<!--            <td th:text="${title}" style="color: blue">-->
+<!--            <td th:text="${descriptions}" style="color: blue">-->
+<!--            <td th:text="${content}" style="color: blue">-->
+<!--            <td th:text="${adres}" style="color: blue">-->
+        </tr>
+        </div>
+    </div>
+    <br>
 <div id="push"></div>
 </div>
 <div id="footer"><footer>
     <ul>
-        <li>Strona postawiona na własnym serwerze Ubuntu-Server Wersja 1.0.7.5</li>
-        <li th:text="${date}" style="color: red">DATE></li>
+        <li>Strona postawiona na własnym serwerze Ubuntu-Server Wersja 1.0.7.6-B</li>
+        <li>Dzis jest:</li>
+        <li th:text="${date}" style="color: green">DATE></li>
+        <li>    Teraz jest:</li>
+        <li th:text="${temp}" style="color: blue">
+        </li>
+        <li>Stopni w krakowie</li>
     </ul>
 <!--    <p></p>-->
 <!--    <span </span>-->
 </footer></div>
 </body>
 </html>
+
 <!--<img th:src="@{/images/......png}" sec:authorize="isAuthenticated()"   />-->

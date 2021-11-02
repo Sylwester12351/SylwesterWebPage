@@ -1,12 +1,12 @@
 package Sylwester.SylwesterWebPage.controllers;
 
 import Sylwester.SylwesterWebPage.entity.AdditionalText;
+import Sylwester.SylwesterWebPage.entity.NewsDataBase;
+import Sylwester.SylwesterWebPage.news.GetNews;
 import Sylwester.SylwesterWebPage.repository.AdditionalTextRepository;
+import Sylwester.SylwesterWebPage.repository.NewsRepository;
 import Sylwester.SylwesterWebPage.weatherPage.GetTemp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,19 +20,37 @@ public class MainController {
     private GetTemp getTemp = new GetTemp();
 
     @Autowired
+    private NewsRepository newsRepository;
+
+    private NewsDataBase newsDataBase = new NewsDataBase();
+
+    @Autowired
     private AdditionalTextRepository additionalTextRepository;
 
-
     @RequestMapping("/")
-    public String mainPage(Model model, Authentication authentication){
+    public String choicePage(Model model){
+        return "Choice";
+    }
+
+    @RequestMapping("/default")
+    public String defaultPage(Model model, Authentication authentication){
+        GetNews getNews = new GetNews();
+        getNews.convert();
+        getTemp.setCity("Krakow"); // Ground state, so that there are no errors
+        getTemp.setCountry("pl");
+        getTemp.convert();
+        String temp = getTemp.getTemperature();
         if (authentication != null){
             model.addAttribute("userName",authentication.getName()+" "+"Zalogowany !");
         }else {
             model.addAttribute("userName","Nie jesteś zalogowany !");
         }
-       model.addAttribute("date", LocalDate.now());
+        model.addAttribute("date", LocalDate.now());
         model.addAttribute("info", new AdditionalText());
         model.addAttribute("message", additionalTextRepository.findAll());
+        model.addAttribute("temp", temp);
+        model.addAttribute("name",getNews.getList());
+
         return "Home";
     }
 
@@ -91,4 +109,7 @@ public class MainController {
 
     @GetMapping("/favicon.ico")
     public String jokePage(Model model){return "IconEgg";}
+
+    @GetMapping("/ForumHome")
+    public String ForumHomePage(Model model){return "UncensoredForumHome";}
 }

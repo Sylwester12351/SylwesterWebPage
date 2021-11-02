@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -65,6 +66,28 @@ public class HatterMainController {
         }else {
             return "DeadHatter";
         }
+    }
+
+    @RequestMapping("/addStat")
+    public String addStats(Model model, Authentication authentication, Integer dmg){
+        Player player = playerRepository.find(authentication.getName());
+        int lvl = player.getPlayerLvl();
+        System.out.println(dmg);
+        int exp = player.getPlayerPractice();
+        float oldDamage = player.getPlayerDamage();
+        int result = 500 * dmg;
+        if (exp < result || lvl < 5){
+            return "FailedBuy";
+        }else {
+
+            float newDamage = oldDamage + dmg;
+            int minusExp = exp - result;
+            player.setPlayerPractice(minusExp);
+            player.setPlayerDamage(newDamage);
+            playerRepository.save(player);
+            return "redirect:Hatter";
+        }
+
     }
 
     @GetMapping("/DeadHatter")

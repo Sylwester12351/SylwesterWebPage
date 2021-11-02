@@ -7,7 +7,7 @@
 </head>
 <body th:style="'background-image:url(' + @{/images-hatter/dead.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
 <h1 style="color:white">Jesteś martwy !</h1>
-<a th:href="@{/}">
+<a th:href="@{/default}">
     <img width="30" height="30" th:src="@{/images/home.png}">
 </a>
 <div th:each="player : ${Hatter}">

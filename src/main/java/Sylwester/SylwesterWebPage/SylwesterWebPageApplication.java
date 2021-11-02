@@ -14,8 +14,8 @@ public class SylwesterWebPageApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SylwesterWebPageApplication.class, args);
-	}
 
+	}
 	@Bean(initMethod = "start", destroyMethod = "stop")
 	public Server h2Server() throws SQLException {
 		return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092");

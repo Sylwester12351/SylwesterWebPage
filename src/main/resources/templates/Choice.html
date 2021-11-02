@@ -1,23 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Test bazy danych</title>
-    <link rel="stylesheet" th:href="@{/css/styleC.css}"/>
-</head>
-<body>
-<div id="header">Choice</div>
-<div id="left">
-    <dl style="">
-        <dt>MENU</dt>
-
-    </dl>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{/css/button.css}"/>
+<body th:style="'background-image:url(' + @{/images/wallpap.jpeg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+<div class="container">
+    <div>
+        <div id="time" style="color: red;" ></div>
+    </div >
+            <div >
+                <p>Jesteś w miejscu z którego możesz przejść pomiędzy stroną podstawową i forum które pełni inne zadanie, oby dwie strony się przeplatają ale ich zamysł jest inny.
+                Po pewnym czasie kiedy forum będzie w miare użyteczne czeka go oddzielenie od podstawowej strony i stanie się oddzelnym projektem działającym na tym samym serwerze.</p>
+                </div>
+    <center>
+        <div>
+        <a class="button" th:href="@{/default}">Strona podstawowa</a>
+            <a class="button" th:href="@{/ForumHome}">Forum</a>
 </div>
-<div id="content">
+    </center>
 
-
+            <div>
+            </div>
+        </div>
+    </form>
 </div>
-<div id="right"></div>
-<div id="footer"></div>
 </body>
+<!--CLOCK code-->
+<script type="text/javascript">
+function getTime()
+{
+    return (new Date()).toLocaleTimeString();
+}
+document.getElementById('time').innerHTML = getTime();
+setInterval(function() {
+    document.getElementById('time').innerHTML = getTime();
+}, 1000);
+</script>
 </html>

@@ -34,6 +34,7 @@ public class RegisterController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+
         Player player = new Player();
         player.setPlayerAlive(true);
         player.setPlayerInPrison(false);
@@ -44,7 +45,7 @@ public class RegisterController {
         player.setPlayerAimBody(70);
         player.setPlayerDamage(0.2f);
         player.setPlayerLastAttacker(" Na razie nikt cię nie zranił ! ");
-        player.setPlayerTestMode(false); // if is true this is only for tests
+        player.setPlayerTestMode(true); // todo switch to false if is true this is only for tests
         player.setPlayerNick(user.getNick());
         playerRepository.save(player);
         userRepo.save(user);

@@ -10,7 +10,7 @@
 <div id="container">
     <div id="header">
         <div id="time" style="color: red;" ></div>
-        <a id="home" th:href="@{/}">
+        <a id="home" th:href="@{/default}">
             <img width="30" height="30" style="float:left;" th:src="@{/images/home.png}">
         </a>
         <a id="message" th:href="@{/Raport}">
@@ -91,18 +91,19 @@
         <span th:utext="${player.playerCocaine}">0</span>
         <h3>Kup za doświadczenie</h3>
         <div>
-            <form action="#" th:action="@{/error}" method="post">
+
+            <form action="#" th:action="@{/addStat}" method="post">
                 <img width="40" height="40" th:src="@{/images-hatter/damage.png}"> <input min="1" type="number" step="1" name="dmg" />
                 <br>
-                <img width="40" height="40" th:src="@{/images-hatter/head_aim.png}"> <input min="1" type="number" step="1" name="aimHead" />
-                <br>
-                <img width="40" height="40" th:src="@{/images-hatter/body_aim.png}"> <input min="1" type="number" step="1" name="aimBody" />
-                <br>
+<!--                <img width="40" height="40" th:src="@{/images-hatter/head_aim.png}"> <input min="1" type="number" step="1" name="aimHead" />-->
+<!--                <br>-->
+<!--                <img width="40" height="40" th:src="@{/images-hatter/body_aim.png}"> <input min="1" type="number" step="1" name="aimBody" />-->
+<!--                <br>-->
                 <input type="submit" value="Wykonaj" />
             </form>
         </div>
         <h3> Ceny </h3>
-
+        <h3>500 exp :DMG</h3>
     </div>
 
     </div>

@@ -17,8 +17,14 @@ public class User {
         @Column(name = "first_name", nullable = false, length = 20)
         private String firstName;
 
-        @Column(name = "last_name", nullable = false, length = 20)
-        private String lastName;
+        @Column(name = "day", nullable = false)
+        private int day;
+
+        @Column(name = "month", nullable = false)
+        private int month;
+
+        @Column(name = "year", nullable = false)
+        private int year;
 
 //        @OneToOne
 //        private Player player;
@@ -55,15 +61,31 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public int getDay() {
+        return day;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setDay(int day) {
+        this.day = day;
     }
 
-//    public Player getPlayer() {
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    //    public Player getPlayer() {
 //        return player;
 //    }
 //
